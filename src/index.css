@@ -1,16 +1,73 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap");
+
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+  font-family: Lato, system-ui, Avenir, Helvetica, Arial, sans-serif;
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  background-image: url(loginpage-bg.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+#login-page {
+  background-color: rgba(24, 26, 28, 0.84);
+  padding: 40px;
+  border-radius: 16px;
+  width: 529px;
+  max-width: 529px;
+}
+
+#login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+label {
+  text-align: left;
+  margin-bottom: -31px;
+}
+
+section {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+input[type="text"],
+input[type="password"] {
+  border-radius: 24px;
+  text-decoration: none;
+  border: 1px solid rgba(231, 227, 252, 0.23);
+  padding: 16px 20px;
+  background: transparent;
+}
+
+input[type="text"]:hover,
+input[type="password"]:hover {
+  border-color: #646cff;
+}
+
+input[type="text"]::placeholder,
+input[type="password"]::placeholder {
+  font-size: 16px;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+.lalala {
+  display: flex;
+  justify-content: space-between;
 }
 
 a {
@@ -30,28 +87,32 @@ body {
   min-height: 100vh;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
-
 button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
+  border-radius: 24px;
+  border: 1px solid rgba(231, 227, 252, 0.23);
+  padding: 14px 20px;
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
+  background-color: rgb(61, 65, 66);
   cursor: pointer;
   transition: border-color 0.25s;
+  margin-bottom: -31px;
 }
 button:hover {
-  border-color: #646cff;
+  border-color: rgb(231, 227, 252);
 }
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
+}
+
+.google {
+  background-color: transparent;
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
 }
 
 @media (prefers-color-scheme: light) {

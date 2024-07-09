@@ -1,35 +1,38 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from "react";
+import reactLogo from "/Logo.png";
+import viteLogo from "/Logo.png";
+import "./App.css";
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <main id="login-page">
+        <img src="Logo.png" alt="Chill Logo" />
+        <h1>Masuk</h1>
+        <h4>Selamat datang kembali!</h4>
+        <form id="login-form">
+          <label for="username">Username</label>
+          <input type="text" id="username" placeholder="Masukkan username" />
+          <label for="password">Password</label>
+          <input type="password" placeholder="Masukkan kata sandi" />
+          <p class="lalala">
+            <span>
+              belum punya akun ? <a href="#">Daftar</a>
+            </span>
+            <span>
+              <a href="#">Lupa kata sandi?</a>
+            </span>
+          </p>
+          <button type="submit">Masuk</button>
+          <p>Atau</p>
+          <button type="submit" class="google">
+            <img src="google-logo.png" alt="" />
+            Masuk dengan Google
+          </button>
+        </form>
+      </main>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
