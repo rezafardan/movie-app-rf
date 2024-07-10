@@ -1,0 +1,67 @@
+.navbar {
+  width: 100%;
+  padding: 25px 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  font-size: 14px;
+  /* background-image: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.5) 10%,
+    transparent
+  ); */
+  background: #181a1c;
+  z-index: 1;
+}
+.navbar-left {
+  display: flex;
+  align-items: center;
+  gap: 80px;
+}
+.navbar-left img {
+  height: 44px;
+}
+.navbar-left ul {
+  display: flex;
+  list-style: none;
+  gap: 80px;
+}
+.navbar-left ul li {
+  cursor: pointer;
+}
+.navbar-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  position: relative;
+}
+.navbar-right .icon {
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+}
+.navbar-right .caret {
+  cursor: pointer;
+}
+.navbar .dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  width: max-content;
+  background: #22282a;
+  padding: 4px 0;
+  border-radius: 10px;
+  z-index: 1;
+  display: none;
+}
+.navbar .dropdown .dd-lists {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 8px 12px;
+  cursor: pointer;
+}
+.navbar-right:hover .dropdown {
+  display: block;
+}
