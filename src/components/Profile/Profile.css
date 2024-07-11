@@ -1,0 +1,12 @@
+.profile {
+  display: flex;
+  flex-direction: column;
+
+  border: 1px solid green;
+}
+.profile-frame {
+  display: flex;
+  flex-direction: column;
+  max-width: 500px;
+  border: 1px solid white;
+}

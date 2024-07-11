@@ -5,6 +5,8 @@
   gap: 160px;
   padding: 60px 5%;
   background: #181a1c;
+  border-top: 1px solid rgba(231, 227, 252, 0.23);
+  bottom: 0;
 }
 
 .footer-icon {

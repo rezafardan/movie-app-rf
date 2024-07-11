@@ -1,0 +1,116 @@
+.login {
+  height: 100vh;
+  background-image: url(/public/bg_login.jpg);
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+.container {
+  background: rgba(24, 26, 28, 0.8);
+  width: max-content;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 37px;
+  border-radius: 16px;
+  padding: 40px;
+  width: 529px;
+  max-width: 529px;
+}
+.logo-img {
+  height: 44px;
+  width: 163px;
+}
+.welcome-text {
+  text-align: center;
+}
+.welcome-text h4 {
+  margin-top: 6px;
+  font-size: 16px;
+  font-weight: 300;
+}
+form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+form label {
+  font-weight: 400;
+  font-size: 18px;
+  margin-bottom: 6px;
+}
+form input[type="text"],
+input[type="password"] {
+  height: 50px;
+  background: transparent;
+  border-radius: 44px;
+  border: 1px solid rgba(231, 227, 252, 0.23);
+  padding: 0 20px;
+  margin-bottom: 37px;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 300;
+}
+
+form input[type="text"]::placeholder,
+input[type="password"]::placeholder {
+  font-size: 16px;
+  font-weight: 300;
+}
+form input[type="text"]:active,
+input[type="password"]:active {
+  border: 1px solid rgb(6, 255, 214);
+}
+form input[type="text"]:focus,
+input[type="password"]:focus {
+  border: 1px solid rgb(6, 255, 214);
+  outline-width: 0;
+}
+.form-help {
+  margin-top: -25px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.form-help p {
+  font-weight: 300;
+  color: #c1c2c4;
+}
+.form-help span {
+  margin-left: 6px;
+  font-weight: 500;
+  cursor: pointer;
+  color: #fff;
+}
+.tombol {
+  margin-top: 37px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+.tombol button {
+  height: 50px;
+  width: 100%;
+  background: #3d4142;
+  border-radius: 44px;
+  border: 1px solid rgba(231, 227, 252, 0.23);
+  padding: 0 20px;
+  font-weight: 400;
+}
+.tombol p {
+  font-weight: 300;
+  color: #c1c2c4;
+}
+.tombol .google {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  background: transparent;
+}

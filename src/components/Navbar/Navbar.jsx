@@ -6,16 +6,31 @@ import caret_icon from "../../assets/caret_icon.svg";
 import dd_profile_icon from "../../assets/dropdown/dd_profile_icon.svg";
 import dd_star_icon from "../../assets/dropdown/dd_star_icon.svg";
 import dd_logout_icon from "../../assets/dropdown/dd_logout_icon.svg";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   return (
     <div className="navbar">
       <div className="navbar-left">
-        <img src={logo} alt="" />
+        <Link to="/">
+          <img src={logo} alt="" />
+        </Link>
         <ul>
-          <li>Series</li>
-          <li>Film</li>
-          <li>Daftar Saya</li>
+          <li>
+            <Link className="link-style" to="/">
+              Series
+            </Link>
+          </li>
+          <li>
+            <Link className="link-style" to="/">
+              Film
+            </Link>
+          </li>
+          <li>
+            <Link className="link-style" to="/mylist">
+              Daftar Saya
+            </Link>
+          </li>
         </ul>
       </div>
       <div className="navbar-right">
@@ -24,7 +39,9 @@ const Navbar = () => {
         <div className="dropdown">
           <div className="dd-lists">
             <img src={dd_profile_icon} alt="" />
-            <p>Profil Saya</p>
+            <Link className="link-style" to="/profile">
+              Profil Saya
+            </Link>
           </div>
           <div className="dd-lists">
             <img src={dd_star_icon} alt="" />

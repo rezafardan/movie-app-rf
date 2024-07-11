@@ -1,0 +1,10 @@
+.subscribe-cards {
+  width: 558px;
+  height: 193px;
+  border: 1px solid green;
+  background: #121212;
+  border-radius: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

@@ -1,12 +1,12 @@
 import React, { useRef } from "react";
 import "./TitleCards.css";
-import cards_data from "../../assets/cards/Cards_data";
+import heros_data from "../../assets/heros/movies-2020s.json";
 import arrow_left from "../../assets/arrow_left.svg";
 import arrow_right from "../../assets/arrow_right.svg";
 import play_icon from "../../assets/play_icon.svg";
 import check_icon from "../../assets/check_icon.svg";
 
-const TitleCards = ({ title, category }) => {
+const TitleCards = ({ title }) => {
   const listRef = useRef(null);
 
   const scrollLeft = () => {
@@ -24,11 +24,11 @@ const TitleCards = ({ title, category }) => {
         <button className="scroll-button left" onClick={scrollLeft}>
           <img src={arrow_left} alt="" />
         </button>
-        {cards_data.map((card, index) => {
+        {heros_data.map((hero, index) => {
           return (
             <div className="card" key={index}>
-              <img src={card.poster} alt={card.name} />
-              <p>{card.name}</p>
+              <img src={hero.thumbnail} alt={hero.title} />
+              <p>{hero.title}</p>
             </div>
           );
         })}

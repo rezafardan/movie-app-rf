@@ -1,4 +1,5 @@
 .navbar {
+  top: 0;
   width: 100%;
   padding: 25px 80px;
   display: flex;
@@ -6,11 +7,6 @@
   align-items: center;
   position: fixed;
   font-size: 14px;
-  /* background-image: linear-gradient(
-    180deg,
-    rgba(0, 0, 0, 0.5) 10%,
-    transparent
-  ); */
   background: #181a1c;
   z-index: 1;
 }
@@ -27,8 +23,10 @@
   list-style: none;
   gap: 80px;
 }
-.navbar-left ul li {
+.navbar-left ul li .link-style {
   cursor: pointer;
+  color: #fff;
+  text-decoration: none;
 }
 .navbar-right {
   display: flex;
