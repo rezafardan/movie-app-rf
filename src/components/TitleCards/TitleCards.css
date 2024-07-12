@@ -23,6 +23,7 @@
 }
 .card-list img {
   width: 234px;
+  height: 332px;
   border-radius: 6px;
   cursor: pointer;
 }
@@ -59,4 +60,18 @@
   right: 3.5%;
 }
 
-/* ======== */
+@media (max-width: 768px) {
+  .titlecards h2 {
+    font-size: 22px;
+  }
+  .card-list img {
+    width: 184px;
+    height: 282px;
+  }
+  .scroll-button.left {
+    display: none;
+  }
+  .scroll-button.right {
+    display: none;
+  }
+}

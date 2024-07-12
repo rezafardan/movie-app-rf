@@ -1,10 +1,27 @@
 .subscribe-cards {
   width: 558px;
   height: 193px;
-  border: 1px solid green;
   background: #121212;
   border-radius: 12px;
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: start;
+  padding: 24px;
+  gap: 12px;
+  background: #3d4142;
+  flex-wrap: wrap;
+}
+
+.subscribe-cards p:first-child {
+  font-weight: 600;
+}
+.subscribe-cards p:last-child {
+  font-weight: 300;
+}
+@media (max-width: 768px) {
+  .subscribe-cards {
+    width: 100%;
+    height: 193px;
+  }
 }

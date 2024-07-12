@@ -54,3 +54,11 @@
   position: absolute;
   right: 3.5%;
 }
+@media (max-width: 768px) {
+  .titlecards-c h2 {
+    font-size: 22px;
+  }
+  .card-list-c img {
+    width: 320px;
+  }
+}

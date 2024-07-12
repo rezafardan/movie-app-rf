@@ -4,7 +4,11 @@ import information_outline from "../../assets/information_outline.svg";
 import volume_off from "../../assets/volume_off.svg";
 import arrow_left from "../../assets/arrow_left.svg";
 import arrow_right from "../../assets/arrow_right.svg";
-const Hero = ({ title, extract, thumbnail, onPrev, onNext }) => {
+const Hero = ({ title, extract, thumbnail, genres, onPrev, onNext }) => {
+  if (!thumbnail || !extract) {
+    return null;
+  }
+
   return (
     <div>
       <div className="hero">

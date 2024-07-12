@@ -97,3 +97,13 @@ button {
 .hero-button-nav:hover {
   background: rgba(0, 0, 0, 0.7);
 }
+
+@media (max-width: 768px) {
+  .caption {
+    color: #fff;
+    font-weight: 400;
+    max-height: 92px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}

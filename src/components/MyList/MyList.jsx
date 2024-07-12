@@ -14,13 +14,6 @@ const MyList = () => {
             <div className="card" key={index}>
               <img src={card.poster} alt={card.name} />
               <p>{card.name}</p>
-              <div className="card-info">
-                <p>{card.name}</p>
-                <div className="icons-preview">
-                  <img src={play_icon} alt="" />
-                  <img src={check_icon} alt="" />
-                </div>
-              </div>
             </div>
           );
         })}

@@ -8,7 +8,7 @@
   position: fixed;
   font-size: 14px;
   background: #181a1c;
-  z-index: 1;
+  z-index: 99;
 }
 .navbar-left {
   display: flex;
@@ -18,20 +18,20 @@
 .navbar-left img {
   height: 44px;
 }
+.logo-desktop {
+  display: block;
+}
+.logo_mobile {
+  display: none;
+}
 .navbar-left ul {
   display: flex;
   list-style: none;
   gap: 80px;
 }
-.navbar-left ul li .link-style {
-  cursor: pointer;
-  color: #fff;
-  text-decoration: none;
-}
 .navbar-right {
   display: flex;
   align-items: center;
-  gap: 8px;
   position: relative;
 }
 .navbar-right .icon {
@@ -42,24 +42,62 @@
 .navbar-right .caret {
   cursor: pointer;
 }
-.navbar .dropdown {
-  position: absolute;
-  top: 100%;
-  right: 0;
-  width: max-content;
-  background: #22282a;
-  padding: 4px 0;
-  border-radius: 10px;
-  z-index: 1;
-  display: none;
-}
-.navbar .dropdown .dd-lists {
+.profile-section {
   display: flex;
   align-items: center;
-  gap: 5px;
-  padding: 8px 12px;
+  cursor: pointer;
+  gap: 8px;
+}
+.dropdown {
+  position: absolute;
+  top: 172%;
+  right: 0;
+  width: 156px;
+  border-radius: 0 0 4px 4px;
+  background-color: #181a1c;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+.dd-lists {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
   cursor: pointer;
 }
-.navbar-right:hover .dropdown {
-  display: block;
+
+.dd-lists img {
+  margin-right: 0.5rem;
+}
+.link-style {
+  cursor: pointer;
+  color: #fff;
+  text-decoration: none;
+}
+.link-style:hover {
+  color: #c2c2c2;
+}
+
+@media (max-width: 768px) {
+  .logo_normal {
+    display: none;
+  }
+  .logo_mobile {
+    display: block;
+    width: 20px;
+  }
+  .navbar {
+    flex-wrap: wrap;
+    padding: 10px 20px;
+  }
+  .navbar-left {
+    gap: 16px;
+  }
+  .navbar-left ul {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .navbar-right .icon {
+    width: 20px;
+    height: 20px;
+  }
 }

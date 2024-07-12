@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./Login.css";
 import logo from "../../assets/logo.png";
 import google_logo from "../../assets/google_logo.svg";
+import { Link } from "react-router-dom";
 
 const Login = () => {
   const [signState, setSignState] = useState("Masuk");
@@ -12,7 +13,7 @@ const Login = () => {
         <img src={logo} alt="Chill Logo" className="logo-img" />
         <div className="welcome-text">
           <h1>{signState}</h1>
-          <h4>Selamat datang!</h4>
+          <h4>Selamat datang{signState === "Masuk" ? " kembali" : ""}!</h4>
         </div>
         <form id="login-form">
           <label for="username">Username</label>
@@ -53,6 +54,7 @@ const Login = () => {
                 >
                   Daftar
                 </span>
+                <span className="forgot-password">Lupa kata sandi?</span>
               </p>
             ) : (
               <p>
@@ -68,7 +70,11 @@ const Login = () => {
             )}
           </div>
           <div className="tombol">
-            <button>{signState}</button>
+            <button>
+              <Link className="link-style" to="/">
+                {signState}
+              </Link>
+            </button>
             <p>Atau</p>
             <button className="google">
               <img src={google_logo} alt="" />

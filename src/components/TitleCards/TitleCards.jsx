@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./TitleCards.css";
 import heros_data from "../../assets/heros/movies-2020s.json";
 import arrow_left from "../../assets/arrow_left.svg";
@@ -6,8 +6,17 @@ import arrow_right from "../../assets/arrow_right.svg";
 import play_icon from "../../assets/play_icon.svg";
 import check_icon from "../../assets/check_icon.svg";
 
+const shuffleArray = (array) => {
+  return array.sort(() => Math.random() - 0.5);
+};
+
 const TitleCards = ({ title }) => {
   const listRef = useRef(null);
+  const [shuffleCards, setShuffleCards] = useState([]);
+
+  useEffect(() => {
+    setShuffleCards(shuffleArray([...heros_data]));
+  }, []);
 
   const scrollLeft = () => {
     listRef.current.scrollBy({ left: -968, behavior: "smooth" });
@@ -24,10 +33,16 @@ const TitleCards = ({ title }) => {
         <button className="scroll-button left" onClick={scrollLeft}>
           <img src={arrow_left} alt="" />
         </button>
-        {heros_data.map((hero, index) => {
+        {shuffleCards.map((hero, index) => {
+          if (!hero.thumbnail) {
+            return null;
+          }
           return (
             <div className="card" key={index}>
-              <img src={hero.thumbnail} alt={hero.title} />
+              <img
+                src={hero.thumbnail}
+                alt={`${hero.title} image not found or broken`}
+              />
               <p>{hero.title}</p>
             </div>
           );

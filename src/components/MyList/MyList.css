@@ -1,8 +1,8 @@
 .mylistcards {
   padding: 0 5%;
-  margin-top: 40px;
+  margin-top: 98px;
   margin-bottom: 40px;
-  position: relative;
+  /* position: relative; */
   transition: transform 0.3s ease-in-out;
 }
 .mylistcards h2 {
@@ -36,4 +36,13 @@
   position: absolute;
   bottom: 8px;
   left: 10px;
+}
+
+@media (max-width: 768px) {
+  .mylist-card img {
+    width: 98px;
+  }
+  .mylist-card {
+    gap: 10px;
+  }
 }

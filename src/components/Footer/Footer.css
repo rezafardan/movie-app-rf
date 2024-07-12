@@ -1,15 +1,17 @@
 .footer {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
-  gap: 160px;
+  /* gap: 160px; */
   padding: 60px 5%;
   background: #181a1c;
   border-top: 1px solid rgba(231, 227, 252, 0.23);
   bottom: 0;
+  width: 100%;
 }
 
-.footer-icon {
+.footer-icon img {
   height: 44px;
   cursor: pointer;
 }
@@ -22,6 +24,10 @@
 .genre p {
   margin-bottom: 15px;
   font-weight: 900px;
+}
+.genre p span,
+.help p span {
+  display: none;
 }
 
 .genre ul {
@@ -54,4 +60,58 @@
   font-size: 16px;
   font-weight: 100px;
   cursor: pointer;
+}
+
+.genre-list,
+.help-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.genre-list.show,
+.help-list.show {
+  display: none; /* Sembunyikan daftar genre dan bantuan secara default */
+}
+
+@media (max-width: 768px) {
+  .footer {
+    flex-direction: column;
+    gap: 2px;
+    align-items: start;
+    padding: 10px 5%;
+  }
+  .footer-icon img {
+    height: 24px;
+  }
+  .genre .genre-toogle,
+  .help .help-toogle {
+    width: 88vw;
+    display: flex;
+    justify-content: space-between;
+  }
+  .genre p span,
+  .help p span {
+    display: block;
+  }
+  .genre p,
+  .help p {
+    margin-top: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+  .genre ul,
+  .help ul {
+    display: none;
+  }
+
+  .genre-list.show,
+  .help-list.show {
+    display: block;
+  }
+  .footer-icon .copyright {
+    margin-top: 10px;
+    color: #c1c2c4;
+  }
 }

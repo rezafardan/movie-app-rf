@@ -20,6 +20,8 @@
   padding: 40px;
   width: 529px;
   max-width: 529px;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 .logo-img {
   height: 44px;
@@ -75,16 +77,22 @@ input[type="password"]:focus {
   display: flex;
   flex-direction: column;
   gap: 6px;
+  position: relative;
 }
 .form-help p {
   font-weight: 300;
   color: #c1c2c4;
 }
+
 .form-help span {
   margin-left: 6px;
   font-weight: 500;
   cursor: pointer;
   color: #fff;
+}
+.form-help .forgot-password {
+  position: absolute;
+  right: 0;
 }
 .tombol {
   margin-top: 37px;
@@ -113,4 +121,17 @@ input[type="password"]:focus {
   align-items: center;
   gap: 20px;
   background: transparent;
+}
+.forgot-password {
+  text-align: right;
+}
+
+@media (max-width: 768px) {
+  .container {
+    max-width: 95%;
+    margin-top: 20px;
+  }
+  .form-help {
+    font-size: 13px;
+  }
 }

@@ -6,12 +6,27 @@ import MyList from "./components/MyList/MyList.jsx";
 import Navbar from "./components/Navbar/Navbar.jsx";
 import Footer from "./components/Footer/Footer.jsx";
 import Profile from "./components/Profile/Profile.jsx";
+import FilmPage from "./components/FilmPage/FilmPage.jsx";
 
 const App = () => {
   return (
     <div>
       <Routes>
         <Route path="/login" element={<Login />} />
+
+        <Route
+          path="*"
+          element={
+            <>
+              <Navbar />
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/mylist" element={<MyList />} />
+              </Routes>
+              <Footer />
+            </>
+          }
+        />
         <Route
           path="/profile"
           element={
@@ -23,14 +38,11 @@ const App = () => {
           }
         />
         <Route
-          path="*"
+          path="/film"
           element={
             <>
               <Navbar />
-              <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/mylist" element={<MyList />} />
-              </Routes>
+              <FilmPage />
               <Footer />
             </>
           }
