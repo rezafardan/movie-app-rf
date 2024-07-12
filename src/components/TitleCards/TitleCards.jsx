@@ -15,7 +15,9 @@ const TitleCards = ({ title }) => {
   const [shuffleCards, setShuffleCards] = useState([]);
 
   useEffect(() => {
-    setShuffleCards(shuffleArray([...heros_data]));
+    const shuffledData = shuffleArray([...heros_data]);
+    const limitedData = shuffledData.slice(0, 30);
+    setShuffleCards(limitedData);
   }, []);
 
   const scrollLeft = () => {
