@@ -1,22 +1,37 @@
 import React from "react";
+import { useFavorites } from "../FavoritesContext/FavoritesConstext";
 import "./MyList.css";
-import cards_data from "../../assets/cards/Cards_data";
-import play_icon from "../../assets/play_icon.svg";
-import check_icon from "../../assets/check_icon.svg";
 
 const MyList = () => {
+  const { favorites, removeFromFavorites } = useFavorites();
+
+  const handleRemoveFromFavorites = (title) => {
+    removeFromFavorites(title);
+  };
+
   return (
     <div className="mylistcards">
       <h2>Daftar Saya</h2>
       <div className="mylist-card">
-        {cards_data.map((card, index) => {
-          return (
+        {favorites.length > 0 ? (
+          favorites.map((hero, index) => (
             <div className="card" key={index}>
-              <img src={card.poster} alt={card.name} />
-              <p>{card.name}</p>
+              <img
+                src={hero.thumbnail}
+                alt={`${hero.title} image not found or broken`}
+              />
+              <p>{hero.title}</p>
+              <button
+                className="remove-button"
+                onClick={() => handleRemoveFromFavorites(hero.title)}
+              >
+                Hapus
+              </button>
             </div>
-          );
-        })}
+          ))
+        ) : (
+          <p>Tidak ada film di daftar favorit Anda.</p>
+        )}
       </div>
     </div>
   );

@@ -15,8 +15,6 @@
   flex-wrap: wrap;
   justify-content: start;
   gap: 30px;
-  overflow: scroll;
-  scroll-behavior: smooth;
 }
 .mylist-card.hovered img {
   transform: scale(1.1);
@@ -26,6 +24,7 @@
 }
 .mylist-card img {
   width: 234px;
+  height: 332px;
   border-radius: 6px;
   cursor: pointer;
 }
@@ -36,6 +35,23 @@
   position: absolute;
   bottom: 8px;
   left: 10px;
+}
+.remove-button {
+  background-color: red;
+  height: fit-content;
+  color: white;
+  font-size: 12px;
+  border: none;
+  padding: 6px 10px;
+  cursor: pointer;
+  position: absolute;
+  bottom: 8px;
+  right: 10px;
+  border-radius: 4px;
+}
+
+.remove-button:hover {
+  background-color: darkred;
 }
 
 @media (max-width: 768px) {

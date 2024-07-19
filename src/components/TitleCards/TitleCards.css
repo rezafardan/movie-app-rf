@@ -2,8 +2,6 @@
   padding: 0 5%;
   margin-top: 40px;
   margin-bottom: 40px;
-  position: relative;
-  transition: transform 0.3s ease-in-out;
 }
 .titlecards h2 {
   margin-bottom: 32px;
@@ -14,9 +12,6 @@
   gap: 10px;
   overflow: scroll;
   scroll-behavior: smooth;
-}
-.card-list.hovered img {
-  transform: scale(1.1);
 }
 .card-list::-webkit-scrollbar {
   display: none;
@@ -35,6 +30,29 @@
   bottom: 8px;
   left: 10px;
 }
+.card-list .favorite-icon {
+  display: none;
+  position: absolute;
+  bottom: 0;
+  cursor: pointer;
+  z-index: 1;
+  background: #181a1c;
+  width: 100%;
+  padding: 8px;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+}
+.card-list .favorite-icon img {
+  width: 24px;
+  height: 24px;
+}
+
+.card-list .card:hover .favorite-icon {
+  display: flex;
+}
+
 .scroll-button {
   background-color: rgba(0, 0, 0, 0.5);
   border: 1px solid #e7e3fc77;
@@ -73,5 +91,8 @@
   }
   .scroll-button.right {
     display: none;
+  }
+  .card-list .favorite-icon {
+    display: flex;
   }
 }
