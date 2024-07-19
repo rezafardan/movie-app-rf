@@ -3,7 +3,7 @@ import "./TitleCards.css";
 import heros_data from "../../assets/heros/movies-2020s.json";
 import arrow_left from "../../assets/arrow_left.svg";
 import arrow_right from "../../assets/arrow_right.svg";
-import play_icon from "../../assets/play_icon.svg";
+import favorite from "../../assets/favorite.svg";
 import { useFavorites } from "../FavoritesContext/FavoritesConstext";
 
 const shuffleArray = (array) => {
@@ -30,7 +30,6 @@ const TitleCards = ({ title }) => {
   };
 
   const handleAddToFavorites = (hero) => {
-    console.log("Adding to favorites:", hero);
     addToFavorites(hero);
   };
 
@@ -57,7 +56,7 @@ const TitleCards = ({ title }) => {
                 onClick={() => handleAddToFavorites(hero)}
               >
                 <div>{hero.title}</div>
-                <img src={play_icon} alt="" />
+                <img src={favorite} alt="" />
               </div>
             </div>
           );

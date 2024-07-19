@@ -43,10 +43,15 @@
   align-items: center;
   border-bottom-left-radius: 6px;
   border-bottom-right-radius: 6px;
+  color: #fff;
 }
 .card-list .favorite-icon img {
   width: 24px;
   height: 24px;
+}
+.card-list .favorite-icon img:hover {
+  padding: 1px;
+  background: rgba(120, 120, 120, 0.5);
 }
 
 .card-list .card:hover .favorite-icon {
@@ -94,5 +99,11 @@
   }
   .card-list .favorite-icon {
     display: flex;
+  }
+  .card-list .card p {
+    white-space: nowrap; /* Mencegah teks berpindah ke baris berikutnya */
+    overflow: hidden; /* Menyembunyikan teks yang melebihi batas wadah */
+    text-overflow: ellipsis;
+    max-width: 20px;
   }
 }

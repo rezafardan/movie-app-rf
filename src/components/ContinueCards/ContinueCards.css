@@ -19,6 +19,7 @@
 }
 .card-list-c img {
   width: 240px;
+  height: 348px;
   border-radius: 6px;
   cursor: pointer;
 }
@@ -59,6 +60,7 @@
     font-size: 22px;
   }
   .card-list-c img {
-    width: 320px;
+    width: 95px;
+    height: 145px;
   }
 }
