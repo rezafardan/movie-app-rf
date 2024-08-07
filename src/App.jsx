@@ -7,6 +7,8 @@ import Navbar from "./components/Navbar/Navbar.jsx";
 import Footer from "./components/Footer/Footer.jsx";
 import Profile from "./components/Profile/Profile.jsx";
 import FilmPage from "./components/FilmPage/FilmPage.jsx";
+import NewMovie from "./components/NewMovie/NewMovie.jsx";
+import EditMovie from "./components/EditMovie/EditMovie.jsx";
 
 const App = () => {
   return (
@@ -27,6 +29,7 @@ const App = () => {
             </>
           }
         />
+
         <Route
           path="/profile"
           element={
@@ -43,6 +46,26 @@ const App = () => {
             <>
               <Navbar />
               <FilmPage />
+              <Footer />
+            </>
+          }
+        />
+        <Route
+          path="/add-movie"
+          element={
+            <>
+              <Navbar />
+              <NewMovie />
+              <Footer />
+            </>
+          }
+        />
+        <Route
+          path="/edit-movie"
+          element={
+            <>
+              <Navbar />
+              <EditMovie />
               <Footer />
             </>
           }

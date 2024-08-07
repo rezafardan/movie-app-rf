@@ -1,10 +1,11 @@
 import React, { useEffect, useRef, useState } from "react";
 import "./TitleCards.css";
-import heros_data from "../../assets/heros/movies-2020s.json";
 import arrow_left from "../../assets/arrow_left.svg";
 import arrow_right from "../../assets/arrow_right.svg";
 import favorite from "../../assets/favorite.svg";
 import { useFavorites } from "../FavoritesContext/FavoritesConstext";
+import useMovie from "../../hooks/useMovie";
+import { Link } from "react-router-dom";
 
 const shuffleArray = (array) => {
   return array.sort(() => Math.random() - 0.5);
@@ -14,12 +15,13 @@ const TitleCards = ({ title }) => {
   const listRef = useRef(null);
   const [shuffleCards, setShuffleCards] = useState([]);
   const { addToFavorites } = useFavorites();
+  const { movies, loading, error, removeMovie } = useMovie();
 
   useEffect(() => {
-    const shuffledData = shuffleArray([...heros_data]);
+    const shuffledData = shuffleArray([...movies]);
     const limitedData = shuffledData.slice(0, 30);
     setShuffleCards(limitedData);
-  }, []);
+  }, [movies]);
 
   const scrollLeft = () => {
     listRef.current.scrollBy({ left: -968, behavior: "smooth" });
@@ -33,6 +35,9 @@ const TitleCards = ({ title }) => {
     addToFavorites(hero);
   };
 
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error : {error.message}</p>;
+
   return (
     <div className="titlecards">
       <h2>{title ? title : "Melanjutkan Tonton Film"}</h2>
@@ -40,22 +45,23 @@ const TitleCards = ({ title }) => {
         <button className="scroll-button left" onClick={scrollLeft}>
           <img src={arrow_left} alt="" />
         </button>
-        {shuffleCards.map((hero, index) => {
-          if (!hero.thumbnail) {
+        {shuffleCards.map((movie) => {
+          if (!movie.thumbnail) {
             return null;
           }
           return (
-            <div className="card" key={index}>
+            <div className="card" key={movie.id}>
               <img
-                src={hero.thumbnail} // Directly using hero.thumbnail
-                alt={`${hero.title} image not found or broken`}
+                src={movie.thumbnail}
+                alt={`${movie.title} image not found or broken`}
               />
-              <p>{hero.title}</p>
+              <p>{movie.title}</p>
               <div
                 className="favorite-icon"
-                onClick={() => handleAddToFavorites(hero)}
+                onClick={() => handleAddToFavorites(movie)}
               >
-                <div>{hero.title}</div>
+                <div>{movie.title}</div>
+                <Link to={`/edit-movie/${movie.id}`}>Edit</Link>
                 <img src={favorite} alt="" />
               </div>
             </div>

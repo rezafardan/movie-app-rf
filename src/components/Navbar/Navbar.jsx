@@ -39,6 +39,16 @@ const Navbar = () => {
               Daftar Saya
             </Link>
           </li>
+          <li>
+            <Link className="link-style" to="/add-movie">
+              Add New Movie
+            </Link>
+          </li>
+          <li>
+            <Link className="link-style" to="/edit-movie">
+              Edit Movie
+            </Link>
+          </li>
         </ul>
       </div>
       <div className="navbar-right">
