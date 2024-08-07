@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App.jsx";
 import "./index.css";
+import "./base.css";
 import { BrowserRouter } from "react-router-dom";
 import { FavoritesProvider } from "./components/FavoritesContext/FavoritesConstext.jsx";
 

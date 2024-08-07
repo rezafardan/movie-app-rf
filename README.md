@@ -1,8 +1,37 @@
-# React + Vite
+# Movie App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Movie App adalah aplikasi berbasis React JS yang memungkinkan pengguna untuk mengelola data film dengan fitur CRUD (Create, Read, Update, Delete), menyimpan film ke dalam daftar film favorit menggunakan Redux, dan login pengguna. Aplikasi ini menggunakan pendekatan desain atomic untuk komponen.
 
-Currently, two official plugins are available:
+## Fitur
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **CRUD Movie Data**: Tambah, baca, perbarui, dan hapus data film.
+- **Favorit Film**: Simpan film ke dalam daftar favorit menggunakan Redux.
+- **Login Pengguna**: Fitur login untuk mengakses aplikasi.
+- **Desain Atomic**: Komponen dibangun dengan pendekatan desain atomic.
+
+## Teknologi yang Digunakan
+
+- **React JS**: Library untuk membangun antarmuka pengguna.
+- **Redux**: Manajemen state global.
+- **React Router**: Routing untuk navigasi aplikasi.
+- **Axios**: Untuk melakukan permintaan HTTP.
+- **MockAPI**: Untuk penyedia data API.
+- **React Hooks**: Untuk pengelolaan state dan efek samping.
+- **Redux Toolkit**: Untuk pengelolaan state Redux.
+- **LocalStorage**: Untuk menyimpan data favorit.
+
+## Struktur Folder
+
+- On going
+
+## Instalasi
+
+```bash
+git clone https://github.com/rezafardan/movie-app-rf
+
+cd movie-app-rf
+
+npm install
+
+npm start
+```
