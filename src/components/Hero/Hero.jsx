@@ -12,7 +12,7 @@ const Hero = ({ title, extract, thumbnail, genres, onPrev, onNext }) => {
 
   return (
     <div>
-      <div className="hero">
+      <div className="relative">
         <button className="hero-button-nav left" onClick={onPrev}>
           <img src={arrow_left} alt="" />
         </button>

@@ -21,6 +21,7 @@ const NavbarRight = () => {
         <img src={profile_img} alt="" className="icon" />
         <img src={caret_icon} alt="" className="caret" />
       </div>
+
       {dropdownVisible && (
         <div className="absolute bg-[#181a1c] top-[170%] right-0 w-max rounded-b-lg z-10">
           <DropdownLists src={dd_profile_icon} to="/profile">

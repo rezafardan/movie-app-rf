@@ -23,7 +23,6 @@ const App = () => {
               <Navbar />
               <Routes>
                 <Route path="/" element={<Home />} />
-                <Route path="/mylist" element={<MyList />} />
               </Routes>
               <Footer />
             </>
@@ -40,6 +39,7 @@ const App = () => {
             </>
           }
         />
+
         <Route
           path="/film"
           element={
@@ -50,6 +50,7 @@ const App = () => {
             </>
           }
         />
+
         <Route
           path="/add-movie"
           element={
@@ -60,6 +61,7 @@ const App = () => {
             </>
           }
         />
+
         <Route
           path="/edit-movie"
           element={

@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import "./Home.css";
 import Navbar from "../../components/Navbar/Navbar";
-import TitleCards from "../../components/TitleCards/TitleCards";
 import ContinueCards from "../../components/ContinueCards/ContinueCards";
 import Hero from "../../components/Hero/Hero";
 import heros_data from "../../assets/heros/movies-2020s.json";
+import ListsPosterCard from "../../components/AtomicComponent/ListsPosterCard";
 
 const Home = () => {
   const [currentHeroIndex, setCurrentHeroIndex] = useState(0);
@@ -43,9 +43,9 @@ const Home = () => {
         onNext={handleNext}
       />
       <ContinueCards />
-      <TitleCards title={"Top Rating Film dan Series Hari ini"} />
-      <TitleCards title={"Film Trending"} />
-      <TitleCards title={"Rilis Baru"} />
+      <ListsPosterCard>Top Rating Film Hari Ini</ListsPosterCard>
+      <ListsPosterCard>Film Trending</ListsPosterCard>
+      <ListsPosterCard>Rilis Baru</ListsPosterCard>
     </div>
   );
 };
