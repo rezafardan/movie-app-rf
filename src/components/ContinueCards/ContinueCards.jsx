@@ -24,7 +24,7 @@ const ContinueCards = ({ title, category }) => {
 
   return (
     <div className="titlecards-c">
-      <h2>{title ? title : "Daftar Film Favorite"}</h2>
+      <h2>{title ? title : "Melanjutkan Tonton Film"}</h2>
       <div className="card-list-c" ref={listRef}>
         {showScrollButtons && (
           <button className="scroll-button left" onClick={scrollLeft}>

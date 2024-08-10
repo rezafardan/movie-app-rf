@@ -10,66 +10,32 @@ import FilmPage from "./components/FilmPage/FilmPage.jsx";
 import NewMovie from "./components/NewMovie/NewMovie.jsx";
 import EditMovie from "./components/EditMovie/EditMovie.jsx";
 
+const Layout = ({ children }) => (
+  <>
+    <Navbar />
+    {children}
+    <Footer />
+  </>
+);
+
 const App = () => {
   return (
     <div>
       <Routes>
         <Route path="/login" element={<Login />} />
-
         <Route
           path="*"
           element={
-            <>
-              <Navbar />
+            <Layout>
               <Routes>
                 <Route path="/" element={<Home />} />
+                <Route path="/film" element={<FilmPage />} />
+                <Route path="/mylist" element={<MyList />} />
+                <Route path="/add-movie" element={<NewMovie />} />
+                <Route path="/edit-movie" element={<EditMovie />} />
+                <Route path="/profile" element={<Profile />} />
               </Routes>
-              <Footer />
-            </>
-          }
-        />
-
-        <Route
-          path="/profile"
-          element={
-            <>
-              <Navbar />
-              <Profile />
-              <Footer />
-            </>
-          }
-        />
-
-        <Route
-          path="/film"
-          element={
-            <>
-              <Navbar />
-              <FilmPage />
-              <Footer />
-            </>
-          }
-        />
-
-        <Route
-          path="/add-movie"
-          element={
-            <>
-              <Navbar />
-              <NewMovie />
-              <Footer />
-            </>
-          }
-        />
-
-        <Route
-          path="/edit-movie"
-          element={
-            <>
-              <Navbar />
-              <EditMovie />
-              <Footer />
-            </>
+            </Layout>
           }
         />
       </Routes>

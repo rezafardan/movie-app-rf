@@ -23,7 +23,7 @@ const NavbarRight = () => {
       </div>
 
       {dropdownVisible && (
-        <div className="absolute bg-[#181a1c] top-[170%] right-0 w-max rounded-b-lg z-10">
+        <div className="absolute bg-[#181a1c] top-[192%] right-[-80%] w-max rounded-b-md pb-1 z-10 px-3">
           <DropdownLists src={dd_profile_icon} to="/profile">
             Profil Saya
           </DropdownLists>

@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import Hero from "../Hero/Hero";
+import Hero from "../AtomicComponent/Hero";
 import heros_data from "../../assets/heros/movies-2020s.json";
 import "./FilmPage.css";
-import TitleCards from "../TitleCards/TitleCards";
+import ListsPosterCard from "../AtomicComponent/ListsPosterCard";
 
 const FilmPage = () => {
   const [currentMovieIndex, setCurrentMovieIndex] = useState(0);
@@ -50,14 +50,11 @@ const FilmPage = () => {
           extract={currentMovie.extract}
           thumbnail={currentMovie.thumbnail}
           genres={currentMovie.genres}
-          onPrev={handlePrev}
-          onNext={handleNext}
         />
       )}
-      <TitleCards title={"Film Rekomendasi Chill"} />
-      <TitleCards title={"Top Rating Film Hari Ini"} />
-      <TitleCards title={"Film Trending"} />
-      <TitleCards title={"Rilis Baru"} />
+      <ListsPosterCard>Top Rating Film Hari Ini</ListsPosterCard>
+      <ListsPosterCard>Film Trending</ListsPosterCard>
+      <ListsPosterCard>Rilis Baru</ListsPosterCard>
     </div>
   );
 };

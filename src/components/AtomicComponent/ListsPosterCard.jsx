@@ -6,15 +6,13 @@ const ListsPosterCard = ({ children }) => {
   const listRef = useRef(null);
 
   return (
-    <div className="my-10 py-0 px-[5%] relative">
-      <h2 className="mb-8">{children}</h2>
+    <div className="py-10 px-[5%] ">
+      <h2 className="mb-8 font-bold text-2xl">{children}</h2>
       <div
-        className="flex item center gap-3 overflow-scroll scroll-smooth "
+        className="flex items-center gap-4 scroll-smooth no-scrollbar no-scrollbar::-webkit-scrollbar"
         ref={listRef}
       >
-        <ScrollButtonListPoster />
         <PosterCard />;
-        <ScrollButtonListPoster />
       </div>
     </div>
   );
