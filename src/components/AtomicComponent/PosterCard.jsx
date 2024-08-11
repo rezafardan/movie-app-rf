@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import useMovie from "../../hooks/useMovie";
 import hover_img from "../../assets/hover_img.png";
+import HoverPoster from "./HoverPoster";
 
 const shuffleArray = (array) => {
   return array.sort(() => Math.random() - 0.5);
@@ -60,23 +61,14 @@ const PosterCard = () => {
               alt={`${movie.title} image not found or broken`}
               className="rounded-md absolute inset-0 object-cover object-center w-full h-full"
             />
-            <div className="z-10 relative w-full transform transition duration-500 hover:scale-125 opacity-0 hover:opacity-100 ease-in-out">
-              <div className="bg-[#212224] absolute h-max w-max bottom-0 top-0 right-0 left-0 z-50 rounded-b-lg p-7 flex flex-col gap-4">
-                <img
-                  className="absolute inset-0 top-0 left-0 right-0 object-fill object-top rounded-t-lg"
-                  src={hover_img}
-                />
-                <div className="bg-[#212224] absolute h-max w-max bottom-0 right-0 left-0 z-50 rounded-b-lg p-7 flex flex-col gap-4">
-                  <p className="text-xs">{movie.title}</p>
-                  <p className="text-xs">logo</p>
-                  {index > 0 && (
-                    <p className="text-xs font-normal text-center w-full">
-                      {genre}
-                    </p>
-                  )}
-                </div>
-              </div>
-            </div>
+            <HoverPoster
+              src={hover_img}
+              genre={movie.genres}
+              index={index}
+              title={movie.title}
+            >
+              {movie.title}
+            </HoverPoster>
           </div>
         );
       })}

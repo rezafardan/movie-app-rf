@@ -1,23 +1,17 @@
-import favorite from "../../assets/favorite.svg";
-import React from "react";
-import { useFavorites } from "../FavoritesContext/FavoritesConstext";
-
-const HoverPoster = () => {
-  const { addToFavorites } = useFavorites();
-
-  const handleAddToFavorites = (hero) => {
-    addToFavorites(hero);
-  };
-
+const HoverPoster = ({ src, children, genre, index }) => {
   return (
-    <div>
-      <p className="absolute bottom-1 left-2"></p>;<div>{movie.title}</div>
+    <div className="relative w-full transform transition duration-700 hover:scale-125 opacity-0 hover:opacity-100 ease-in-out flex flex-col bg-[#e5e8ed]">
       <img
-        src={favorite}
-        alt=""
-        onClick={() => handleAddToFavorites(movie)}
-        className="w-5 h-5 cursor-pointer"
+        className="absolute inset-0 top-0 left-0 right-0 object-fill object-top rounded-t-lg"
+        src={src}
       />
+      <div className="bg-[#fcfcfc] absolute h-max w-full bottom-0 right-0 left-0 z-50 rounded-b-lg p-7 flex flex-col gap-4">
+        <p className="text-xs">{children}</p>
+        <p className="text-xs">logo</p>x
+        {{ index } > 0 && (
+          <p className="text-xs font-normal text-center w-full">{genre}</p>
+        )}
+      </div>
     </div>
   );
 };
