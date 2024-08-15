@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "https://66ad757fb18f3614e3b531b5.mockapi.io/api/v1/movies";
+const API_URL = "https://66ad757fb18f3614e3b531b5.mockapi.io/movies";
 
 export const getMovies = async () => {
   const response = await axios.get(API_URL);

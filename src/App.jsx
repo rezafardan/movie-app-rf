@@ -3,7 +3,7 @@ import Home from "./pages/Home/Home.jsx";
 import { Routes, Route } from "react-router-dom";
 import Login from "./pages/Login/Login.jsx";
 import MyList from "./components/MyList/MyList.jsx";
-import Navbar from "./components/Navbar/Navbar.jsx";
+import Navbar from "./components/AtomicComponent/Navbar.jsx";
 import Footer from "./components/Footer/Footer.jsx";
 import Profile from "./components/Profile/Profile.jsx";
 import FilmPage from "./components/FilmPage/FilmPage.jsx";
@@ -32,7 +32,7 @@ const App = () => {
                 <Route path="/film" element={<FilmPage />} />
                 <Route path="/mylist" element={<MyList />} />
                 <Route path="/add-movie" element={<NewMovie />} />
-                <Route path="/edit-movie" element={<EditMovie />} />
+                <Route path="/edit-movie/:id" element={<EditMovie />} />
                 <Route path="/profile" element={<Profile />} />
               </Routes>
             </Layout>

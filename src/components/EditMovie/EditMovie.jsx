@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import useMovie from "../../hooks/useMovie";
+import "./EditMovie.css";
+import Button from "../AtomicComponent/Button";
 
 const EditMovie = () => {
   const { id } = useParams();
@@ -10,27 +12,32 @@ const EditMovie = () => {
   const [genres, setGenres] = useState([]);
   const [href, setHref] = useState("");
   const [extract, setExtract] = useState("");
-  const [thumbnail, setThumnail] = useState("");
+  const [thumbnail, setThumbnail] = useState("");
   const navigate = useNavigate();
-  const { getMovieById, editMovie } = useMovie();
+  const { movies, getMovieById, editMovie } = useMovie();
 
   useEffect(() => {
     const fetchMovie = async () => {
       try {
+        console.log("Fetching movie with ID:", id); // Debugging log
         const movie = await getMovieById(id);
-        setTitle(movie.title);
-        setYear(movie.year);
-        setCast(movie.cast);
-        setGenres(movie.genres);
-        setHref(movie.href);
-        setExtract(movie.extract);
-        setThumnail(movie.thumbnail);
+        console.log("Fetched movie data:", movie); // Debugging log
+        if (movie) {
+          setTitle(movie.title || "");
+          setYear(movie.year || "");
+          setCast(movie.cast || []);
+          setGenres(movie.genres || []);
+          setHref(movie.href || "");
+          setExtract(movie.extract || "");
+          setThumbnail(movie.thumbnail || "");
+        }
       } catch (err) {
-        console.log(err);
+        console.error("Error fetching movie:", err);
       }
     };
+
     fetchMovie();
-  }, [id, getMovieById]);
+  }, [movies, id, getMovieById]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -44,81 +51,117 @@ const EditMovie = () => {
         extract,
         thumbnail,
       });
-      navigate("/");
+      alert("Update data berhasil");
     } catch (err) {
-      console.log(err);
+      console.log("Error updating movie:", err);
     }
   };
 
+  const handleEdit = (movieId) => {
+    navigate(`/edit-movie/${movieId}`);
+  };
+
   return (
-    <div>
-      <h2>Edit Movie</h2>
-      <form onSubmit={handleSubmit}>
+    <div className="mt-32 mx-[5%]">
+      <div className="movie-list-container">
+        <h2>Daftar Film</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>No</th>
+              <th>Judul</th>
+              <th>Aksi</th>
+            </tr>
+          </thead>
+          <tbody>
+            {movies.map((movie, index) => (
+              <tr key={movie.id}>
+                <td>{index + 1}</td>
+                <td>{movie.title}</td>
+                <td>
+                  <Button
+                    onClick={() => handleEdit(movie.id)}
+                    className="px-4 bg-black"
+                  >
+                    Edit
+                  </Button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <div className="addmovie-container">
+        <h2>Edit Movie</h2>
         <div>
-          <label>Title:</label>
-          <input
-            type="text"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-            required
-          />
+          <form onSubmit={handleSubmit}>
+            <label htmlFor="title">Title:</label>
+            <input
+              id="title"
+              type="text"
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+              required
+            />
+
+            <label>Year:</label>
+            <input
+              type="text"
+              value={year}
+              onChange={(e) => setYear(e.target.value)}
+              required
+            />
+
+            <label>Cast:</label>
+            <input
+              type="text"
+              value={cast.join(", ")}
+              onChange={(e) =>
+                setCast(e.target.value.split(",").map((item) => item.trim()))
+              }
+              required
+            />
+
+            <label>Genres:</label>
+            <input
+              type="text"
+              value={genres.join(", ")}
+              onChange={(e) =>
+                setGenres(e.target.value.split(",").map((item) => item.trim()))
+              }
+              required
+            />
+
+            <label>Href:</label>
+            <input
+              type="text"
+              value={href}
+              onChange={(e) => setHref(e.target.value)}
+              required
+            />
+
+            <label>Extract:</label>
+            <textarea
+              type="text"
+              value={extract}
+              onChange={(e) => setExtract(e.target.value)}
+              required
+            ></textarea>
+
+            <label>Thumbnail:</label>
+            <input
+              type="text"
+              value={thumbnail}
+              onChange={(e) => setThumbnail(e.target.value)}
+              required
+            />
+
+            <Button type="submit" className="justify-center">
+              Update Movie
+            </Button>
+          </form>
         </div>
-        <div>
-          <label>Director:</label>
-          <input
-            type="text"
-            value={year}
-            onChange={(e) => setYear(e.target.value)}
-            required
-          />
-        </div>
-        <div>
-          <label>Year:</label>
-          <input
-            type="number"
-            value={cast}
-            onChange={(e) => setCast(e.target.value)}
-            required
-          />
-        </div>
-        <div>
-          <label>Genres:</label>
-          <input
-            type="text"
-            value={genres}
-            onChange={(e) => setGenres(e.target.value)}
-            required
-          />
-        </div>
-        <div>
-          <label>Href:</label>
-          <input
-            type="text"
-            value={href}
-            onChange={(e) => setHref(e.target.value)}
-            required
-          />
-        </div>
-        <div>
-          <label>Extract:</label>
-          <input
-            type="text"
-            value={extract}
-            onChange={(e) => setExtract(e.target.value)}
-            required
-          />
-        </div>
-        <div>
-          <label>Thumbnail:</label>
-          <input
-            type="text"
-            value={thumbnail}
-            onChange={(e) => setThumnail(e.target.value)}
-            required
-          />
-        </div>
-        <button type="submit">Update Movie</button>
-      </form>
+      </div>
     </div>
   );
 };

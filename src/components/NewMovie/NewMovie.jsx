@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import useMovie from "../../hooks/useMovie";
 import "./NewMovie.css";
+import Button from "../AtomicComponent/Button";
 
 const NewMovie = () => {
   const [title, setTitle] = useState("");
@@ -19,15 +20,17 @@ const NewMovie = () => {
 
     try {
       await addMovie({ title, year, cast, genres, href, extract, thumbnail });
-      <p>Done</p>;
+      alert("Data Berhasil di Submit");
     } catch (err) {
       console.log(`Error adding movie: ${err}`);
     }
   };
 
   return (
-    <div className="addmovie-container">
-      <h2>Add New Movie</h2>
+    <div className="mt-20 px-[5%]">
+      <div className="text-center text-2xl font-bold mb-4">
+        Tambahkan Film Baru
+      </div>
       <div>
         <form onSubmit={handleSubmit}>
           <label htmlFor="title">Judul Film: </label>
@@ -81,12 +84,13 @@ const NewMovie = () => {
           />
 
           <label htmlFor="extract">Deskripsi Film: </label>
-          <input
+          <textarea
             type="text"
             id="extract"
             value={extract}
             placeholder="Deskripsi lengkap tentang film..."
             onChange={(e) => setExtract(e.target.value)}
+            className="p-4"
             required
           />
 
@@ -100,7 +104,9 @@ const NewMovie = () => {
             required
           />
 
-          <button type="submit">Simpan</button>
+          <Button type="submit" className="bg-slate-400 justify-center mb-4">
+            Simpan
+          </Button>
         </form>
       </div>
     </div>

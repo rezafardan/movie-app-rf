@@ -53,7 +53,7 @@ const PosterCard = () => {
         }
         return (
           <div
-            className="flex relative min-h-[365px] min-w-[234px] "
+            className="flex relative min-h-[365px] min-w-[234px] cursor-pointer"
             key={movie.id}
           >
             <img
@@ -63,7 +63,7 @@ const PosterCard = () => {
             />
             <HoverPoster
               src={hover_img}
-              genre={movie.genres}
+              genre={movie.genre}
               index={index}
               title={movie.title}
             >

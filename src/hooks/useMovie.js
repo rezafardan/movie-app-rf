@@ -7,6 +7,7 @@ import {
   deleteMovie,
 } from "../services/movieService";
 
+// custom Hooks
 const useMovie = () => {
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -39,8 +40,10 @@ const useMovie = () => {
 
   const editMovie = async (id, updatedData) => {
     try {
-      const updateMovie = await updateMovie(id, updatedData);
-      setMovies(movies.map((movie) => (movie.id === id ? updateMovie : movie)));
+      const updatedMovie = await updateMovie(id, updatedData);
+      setMovies((prevMovies) =>
+        prevMovies.map((movie) => (movie.id === id ? updatedMovie : movie))
+      );
     } catch (err) {
       setError(err);
     }
