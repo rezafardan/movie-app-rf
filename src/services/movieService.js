@@ -1,28 +1,26 @@
-import axios from "axios";
-
-const API_URL = "https://66ad757fb18f3614e3b531b5.mockapi.io/movies";
+import axiosIstance from "../axiosConfig";
 
 export const getMovies = async () => {
-  const response = await axios.get(API_URL);
+  const response = await axiosIstance.get("/");
   return response.data;
 };
 
 export const getMovieById = async (id) => {
-  const response = await axios.get(`${API_URL}/${id}`);
+  const response = await axiosIstance.get(`/${id}`);
   return response.data;
 };
 
 export const createMovie = async (movieData) => {
-  const response = await axios.post(API_URL, movieData);
+  const response = await axiosIstance.post("/", movieData);
   return response.data;
 };
 
 export const updateMovie = async (id, updatedData) => {
-  const response = await axios.put(`${API_URL}/${id}`, updatedData);
+  const response = await axiosIstance.put(`/${id}`, updatedData);
   return response.data;
 };
 
 export const deleteMovie = async (id) => {
-  const response = await axios.delete(`${API_URL}/${id}`);
+  const response = await axiosIstance.delete(`/${id}`);
   return response.data;
 };

@@ -1,6 +1,6 @@
 .login {
   height: 100vh;
-  background-image: url(/public/bg_login.jpg);
+  background-image: url(/bg_login.jpg);
   background-position: center;
   background-size: cover;
   display: flex;
