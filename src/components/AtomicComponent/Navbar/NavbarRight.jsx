@@ -1,9 +1,9 @@
 import { useEffect, useRef, useState } from "react";
-import profile_img from "../../assets/profile-img.png";
-import caret_icon from "../../assets/caret_icon.svg";
-import dd_profile_icon from "../../assets/dropdown/dd_profile_icon.svg";
-import dd_star_icon from "../../assets/dropdown/dd_star_icon.svg";
-import dd_logout_icon from "../../assets/dropdown/dd_logout_icon.svg";
+import profile_img from "../../../assets/profile-img.png";
+import caret_icon from "../../../assets/caret_icon.svg";
+import dd_profile_icon from "../../../assets/dropdown/dd_profile_icon.svg";
+import dd_star_icon from "../../../assets/dropdown/dd_star_icon.svg";
+import dd_logout_icon from "../../../assets/dropdown/dd_logout_icon.svg";
 import DropdownLists from "./DropdownLists";
 import NavbarAdmin from "./NavbarAdmin";
 
@@ -46,7 +46,7 @@ const NavbarRight = () => {
 
         {dropdownVisible && (
           <div
-            className="absolute bg-[#181a1c] top-[192%] right-[-80%] w-max rounded-b-md pb-1 z-10 px-3"
+            className="absolute bg-[#181a1c] top-[180%] right-0 w-max rounded-b-md pb-1 z-10 px-3"
             ref={dropdownRef}
           >
             <DropdownLists src={dd_profile_icon} to="/profile">

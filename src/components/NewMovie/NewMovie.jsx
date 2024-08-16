@@ -21,13 +21,14 @@ const NewMovie = () => {
     try {
       await addMovie({ title, year, cast, genres, href, extract, thumbnail });
       alert("Data Berhasil di Submit");
+      navigate("/edit-movie/1");
     } catch (err) {
       console.log(`Error adding movie: ${err}`);
     }
   };
 
   return (
-    <div className="mt-20 px-[5%]">
+    <div className="mt-20 md:mt-32 px-[4%]">
       <div className="text-center text-2xl font-bold mb-4">
         Tambahkan Film Baru
       </div>
@@ -90,7 +91,7 @@ const NewMovie = () => {
             value={extract}
             placeholder="Deskripsi lengkap tentang film..."
             onChange={(e) => setExtract(e.target.value)}
-            className="p-4"
+            className="mb-6"
             required
           />
 

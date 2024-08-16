@@ -1,32 +1,5 @@
 /* Container */
 
-.addmovie-container {
-  display: flex;
-  flex-direction: column;
-  align-items: start;
-  gap: 37px;
-  border-radius: 16px;
-  padding: 40px;
-  margin-top: 90px;
-  margin-bottom: 20px;
-  margin-left: 60px;
-  width: 100vw;
-}
-
-.addmovie-container input {
-  width: 650px;
-}
-
-.addmovie-container button {
-  height: 50px;
-  width: 100%;
-  background: #3d4142;
-  border-radius: 44px;
-  border: 1px solid rgba(231, 227, 252, 0.23);
-  padding: 0 20px;
-  font-weight: 400;
-}
-
 textarea {
   height: 200px;
   background: transparent;
@@ -41,7 +14,6 @@ textarea {
 }
 
 textarea::placeholder {
-  padding: 20px;
   font-size: 16px;
   font-weight: 300;
 }
@@ -52,7 +24,6 @@ input[type="number"] {
   background: transparent;
   border-radius: 44px;
   border: 1px solid rgba(231, 227, 252, 0.23);
-  padding: 0 20px;
   margin-bottom: 37px;
   color: #fff;
   font-size: 16px;
@@ -72,17 +43,4 @@ form input[type="text"]:focus,
 input[type="number"]:focus {
   border: 1px solid rgb(6, 255, 214);
   outline-width: 0;
-}
-
-@media (max-width: 768px) {
-  .addmovie-container {
-    max-width: 95%;
-    margin-top: 20px;
-  }
-  .addmovie-container input {
-    max-width: 95%;
-  }
-  .form-help {
-    font-size: 13px;
-  }
 }

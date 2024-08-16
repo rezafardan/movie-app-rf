@@ -3,7 +3,7 @@ import Home from "./pages/Home/Home.jsx";
 import { Routes, Route } from "react-router-dom";
 import Login from "./pages/Login/Login.jsx";
 import MyList from "./components/MyList/MyList.jsx";
-import Navbar from "./components/AtomicComponent/Navbar.jsx";
+import Navbar from "./components/AtomicComponent/Navbar/Navbar.jsx";
 import Footer from "./components/Footer/Footer.jsx";
 import Profile from "./components/Profile/Profile.jsx";
 import FilmPage from "./components/FilmPage/FilmPage.jsx";

@@ -7,11 +7,9 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 20px;
 }
 .container {
-  background: rgba(24, 26, 28, 0.8);
-  width: max-content;
+  background: #181a1ccc;
   display: flex;
   flex-direction: column;
   align-items: center;

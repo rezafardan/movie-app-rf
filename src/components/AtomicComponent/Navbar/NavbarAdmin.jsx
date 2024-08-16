@@ -1,7 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
 import DropdownLists from "./DropdownLists";
-import { Link } from "react-router-dom";
 import NavbarLink from "./NavbarLink";
+import logo from "../../../assets/logo_mobile.svg";
+import edit from "../../../assets/edit.svg";
 
 const NavbarAdmin = () => {
   const [dropdown, setDropdown] = useState(false);
@@ -30,15 +31,19 @@ const NavbarAdmin = () => {
 
   return (
     <div className="flex items-center relative">
-      <NavbarLink onClick={klikDropdown}>Admin</NavbarLink>
+      <NavbarLink onClick={klikDropdown}>Menu</NavbarLink>
 
       {dropdown ? (
         <div
           ref={ddRef}
-          className="absolute bg-[#181a1c] top-[192%] right-[-80%] w-max rounded-b-md pb-1 z-10 px-3"
+          className="absolute bg-[#181a1c] top-[180%] right-0 w-max rounded-b-md pb-1 z-10 px-3"
         >
-          <DropdownLists to="/add-movie">Tambah Film</DropdownLists>
-          <DropdownLists to="/edit-movie/1">Edit Film</DropdownLists>
+          <DropdownLists to="/add-movie" src={logo}>
+            Tambah Film
+          </DropdownLists>
+          <DropdownLists to="/edit-movie/1" src={edit}>
+            Edit Film
+          </DropdownLists>
         </div>
       ) : null}
     </div>

@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import Hero from "../AtomicComponent/Hero";
+import Hero from "../AtomicComponent/Hero/Hero";
 import heros_data from "../../assets/heros/movies-2020s.json";
 import "./FilmPage.css";
-import ListsPosterCard from "../AtomicComponent/ListsPosterCard";
+import ListsPosterCard from "../AtomicComponent/PosterCard/ListsPosterCard";
 
 const FilmPage = () => {
   const [currentMovieIndex, setCurrentMovieIndex] = useState(0);

@@ -6,14 +6,14 @@ const ListsPosterCard = ({ children }) => {
   const listRef = useRef(null);
 
   return (
-    <div className="relative my-8 mx-[5%]">
+    <div className="relative my-10 mx-[4%]">
       <ScrollButtonListPoster
         src="left"
-        className="left-[-22px] z-20"
+        className="left-[-22px]"
         click="left"
         listRef={listRef}
       />
-      <h2 className="font-bold text-2xl">{children}</h2>
+      <h2 className="text-2xl font-bold mb-4">{children}</h2>
       <div
         className="flex items-center gap-4 relative scroll-smooth overflow-x-scroll overflow-y-hidden no-scrollbar no-scrollbar::-webkit-scrollbar"
         ref={listRef}
@@ -22,7 +22,7 @@ const ListsPosterCard = ({ children }) => {
       </div>
       <ScrollButtonListPoster
         src="right"
-        className="right-[-22px] z-20"
+        className="right-[-22px]"
         click="right"
         listRef={listRef}
       />

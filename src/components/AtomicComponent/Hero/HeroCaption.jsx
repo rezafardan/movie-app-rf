@@ -1,15 +1,13 @@
-import Button from "./Button";
-import information_outline from "../../assets/information_outline.svg";
-import volume_off from "../../assets/volume_off.svg";
+import Button from "../Button";
+import information_outline from "../../../assets/information_outline.svg";
+import volume_off from "../../../assets/volume_off.svg";
 
 const HeroCaption = ({ title, extract }) => {
   return (
     <div className="absolute w-full px-[5%] bottom-[5%] flex flex-col gap-10">
       <div>
-        <p className="text-5xl font-bold mb-3">{title}</p>
-        <p className="max-w-2xl md:max-w-screen-md text-md font-light">
-          {extract}
-        </p>
+        <p className="text-4xl md:text-6xl font-bold mb-4">{title}</p>
+        <p className="text-sm md:text-lg font-light">{extract}</p>
       </div>
       <div className="flex justify-between items-center">
         <div className="flex items-center gap-2">

@@ -13,7 +13,11 @@ export const FavoritesProvider = ({ children }) => {
   });
 
   useEffect(() => {
-    localStorage.setItem("favorites", JSON.stringify(favorites));
+    try {
+      localStorage.setItem("favorites", JSON.stringify(favorites));
+    } catch (error) {
+      console.log(error);
+    }
   }, [favorites]);
 
   const addToFavorites = (hero) => {

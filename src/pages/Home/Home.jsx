@@ -1,5 +1,5 @@
-import Hero from "../../components/AtomicComponent/Hero";
-import ListsPosterCard from "../../components/AtomicComponent/ListsPosterCard";
+import Hero from "../../components/AtomicComponent/Hero/Hero";
+import ListsPosterCard from "../../components/AtomicComponent/PosterCard/ListsPosterCard";
 
 const Home = () => {
   return (
