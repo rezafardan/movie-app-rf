@@ -3,7 +3,7 @@ import check_icon from "../../../assets/check_icon.svg";
 import caret_icon from "../../../assets/caret_icon.svg";
 import Button from "../Button";
 
-const HoverPoster = ({ src, onFavoritesClick }) => {
+const HoverPoster = ({ src }) => {
   return (
     <div className="flex gap-3 md:gap-5 items-start w-11/12 rounded-lg my-2 mx-2 transform transition duration-700 opacity-0 hover:opacity-100 ease-in-out flex-col bg-[#181A1C] z-10">
       <img
@@ -16,7 +16,6 @@ const HoverPoster = ({ src, onFavoritesClick }) => {
           <img
             src={check_icon}
             className="w-6 border rounded-full md:w-10 p-1 hover:bg-gray-600"
-            onClick={onFavoritesClick}
           />
         </div>
         <img src={caret_icon} className="border rounded-full px-1 md:px-3" />

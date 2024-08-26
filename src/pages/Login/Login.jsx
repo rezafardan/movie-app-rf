@@ -9,7 +9,7 @@ const Login = () => {
 
   return (
     <div className="login">
-      <div className="bg-[#181a1ccc] flex flex-col items-center gap-9 rounded-2xl p-10 w-[96%] md:w-[50%]">
+      <div className="bg-[#181a1ccc] flex flex-col items-center gap-9 rounded-2xl p-10 w-[90%] sm:w-[70%] md:w-[50%]">
         <img src={logo} alt="Chill Logo" className="logo-img" />
         <div className="welcome-text">
           <h1>{signState}</h1>

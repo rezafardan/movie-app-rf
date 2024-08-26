@@ -73,7 +73,7 @@ const EditMovie = () => {
   };
 
   return (
-    <div className="mt-32 mx-[4%]">
+    <div className="mt-24 md:mt-32 mx-[4%]">
       <div>
         <div className="text-center text-2xl font-bold mb-4">Daftar Film</div>
         <div className="shadow-md rounded-lg">

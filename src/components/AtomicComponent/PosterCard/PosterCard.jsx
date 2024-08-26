@@ -4,7 +4,6 @@ import hover_img from "../../../assets/hover_img.png";
 import HoverPoster from "./HoverPoster";
 import Loading from "../Loading";
 import Error from "../Error";
-import { useFavorites } from "../../FavoritesContext/FavoritesConstext";
 
 const shuffleArray = (array) => {
   return array.sort(() => Math.random() - 0.5);
@@ -13,18 +12,12 @@ const shuffleArray = (array) => {
 const PosterCard = () => {
   const [shuffleCards, setShuffleCards] = useState([]);
   const { movies, loading, error } = useMovie();
-  const { addToFavorites } = useFavorites();
 
   useEffect(() => {
     const shuffledData = shuffleArray([...movies]);
     const limitedData = shuffledData.slice(0, 30);
     setShuffleCards(limitedData);
   }, [movies]);
-
-  const handleAddToFavorites = (movie) => {
-    console.log("Adding to favorites:", movie);
-    addToFavorites(movie);
-  };
 
   if (loading) return <Loading />;
   if (error) return <Error error={error.message}></Error>;
@@ -42,11 +35,7 @@ const PosterCard = () => {
               alt={`${movie.title} image not found or broken`}
               className="rounded-md absolute inset-0 object-cover object-center w-full h-full"
             />
-            <HoverPoster
-              src={movie.thumbnail}
-              title={movie.title}
-              onFavoritesClick={handleAddToFavorites}
-            >
+            <HoverPoster src={movie.thumbnail} title={movie.title}>
               {movie.title}
             </HoverPoster>
           </div>

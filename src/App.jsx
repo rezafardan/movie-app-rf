@@ -2,7 +2,6 @@ import React from "react";
 import Home from "./pages/Home/Home.jsx";
 import { Routes, Route } from "react-router-dom";
 import Login from "./pages/Login/Login.jsx";
-import MyList from "./components/MyList/MyList.jsx";
 import Navbar from "./components/AtomicComponent/Navbar/Navbar.jsx";
 import Footer from "./components/Footer/Footer.jsx";
 import Profile from "./components/Profile/Profile.jsx";
@@ -30,7 +29,6 @@ const App = () => {
               <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/film" element={<FilmPage />} />
-                <Route path="/mylist" element={<MyList />} />
                 <Route path="/add-movie" element={<NewMovie />} />
                 <Route path="/edit-movie/:id" element={<EditMovie />} />
                 <Route path="/profile" element={<Profile />} />
