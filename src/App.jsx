@@ -1,4 +1,3 @@
-import React from "react";
 import Home from "./pages/Home/Home.jsx";
 import { Routes, Route } from "react-router-dom";
 import Login from "./pages/Login/Login.jsx";
@@ -7,7 +6,8 @@ import Footer from "./components/Footer/Footer.jsx";
 import Profile from "./components/Profile/Profile.jsx";
 import FilmPage from "./components/FilmPage/FilmPage.jsx";
 import NewMovie from "./components/NewMovie/NewMovie.jsx";
-import EditMovie from "./components/EditMovie/EditMovie.jsx";
+import MovieData from "./components/EditMovie/MovieData.jsx";
+import FormEditMovie from "./components/EditMovie/FormEditMovie.jsx";
 
 const Layout = ({ children }) => (
   <>
@@ -30,7 +30,8 @@ const App = () => {
                 <Route path="/" element={<Home />} />
                 <Route path="/film" element={<FilmPage />} />
                 <Route path="/add-movie" element={<NewMovie />} />
-                <Route path="/edit-movie/:id" element={<EditMovie />} />
+                <Route path="/moviedata" element={<MovieData />} />
+                <Route path="/formedit/:id" element={<FormEditMovie />} />
                 <Route path="/profile" element={<Profile />} />
               </Routes>
             </Layout>

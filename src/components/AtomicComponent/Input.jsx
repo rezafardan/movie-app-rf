@@ -8,7 +8,7 @@ const Input = ({ htmlFor, children }) => {
         type={type}
         id={id}
         value={value}
-        placeholder="Judul film..."
+        placeholder={"Judul film..."}
         onChange={(e) => setTitle(e.target.value)}
         required
       />

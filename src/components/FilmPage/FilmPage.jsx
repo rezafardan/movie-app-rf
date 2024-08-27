@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Hero from "../AtomicComponent/Hero/Hero";
-import heros_data from "../../assets/heros/movies-2020s.json";
+import heros_data from "../../assets/movie_json/movies-2020s.json";
 import "./FilmPage.css";
 import ListsPosterCard from "../AtomicComponent/PosterCard/ListsPosterCard";
 

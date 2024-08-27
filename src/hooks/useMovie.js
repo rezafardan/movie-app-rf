@@ -1,60 +1,42 @@
-import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import {
-  getMovies,
-  getMovieById,
-  createMovie,
-  updateMovie,
-  deleteMovie,
-} from "../services/movieService";
+  fetchMovies,
+  addMovie,
+  editMovie,
+  removeMovie,
+} from "../services/movieSlice";
+import { useEffect } from "react";
 
 // custom Hooks
 const useMovie = () => {
-  const [movies, setMovies] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
+  const dispatch = useDispatch();
+  const { movies, loading, error } = useSelector((state) => state.movies);
 
   useEffect(() => {
-    const fetchMovies = async () => {
-      setLoading(true);
-      try {
-        const data = await getMovies();
-        setMovies(data);
-      } catch (err) {
-        setError(err);
-      } finally {
-        setLoading(false);
-      }
-    };
+    dispatch(fetchMovies());
+  }, [dispatch]);
 
-    fetchMovies();
-  }, []);
-
-  const addMovie = async (movieData) => {
+  const addNewMovie = async (movieData) => {
     try {
-      const newMovie = await createMovie(movieData);
-      setMovies([...movies, newMovie]);
-    } catch (err) {
-      setError(err);
+      await dispatch(addMovie(movieData)).unwrap();
+    } catch (error) {
+      console.log(error);
     }
   };
 
-  const editMovie = async (id, updatedData) => {
+  const updateMovie = async (id, updatedData) => {
     try {
-      const updatedMovie = await updateMovie(id, updatedData);
-      setMovies((prevMovies) =>
-        prevMovies.map((movie) => (movie.id === id ? updatedMovie : movie))
-      );
-    } catch (err) {
-      setError(err);
+      await dispatch(editMovie({ id, updatedData })).unwrap();
+    } catch (error) {
+      console.log(error);
     }
   };
 
-  const removeMovie = async (id) => {
+  const deleteMovie = async (id) => {
     try {
-      await deleteMovie(id);
-      setMovies(movies.filter((movie) => movie.id !== id));
-    } catch (err) {
-      setError(err);
+      await dispatch(removeMovie(id)).unwrap();
+    } catch (error) {
+      console.log(error);
     }
   };
 
@@ -62,10 +44,9 @@ const useMovie = () => {
     movies,
     loading,
     error,
-    addMovie,
-    editMovie,
-    removeMovie,
-    getMovieById,
+    addMovie: addNewMovie,
+    editMovie: updateMovie,
+    removeMovie: deleteMovie,
   };
 };
 

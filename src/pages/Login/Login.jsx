@@ -8,14 +8,16 @@ const Login = () => {
   const [signState, setSignState] = useState("Masuk");
 
   return (
-    <div className="login">
+    <div className="h-screen flex flex-col justify-center items-center bg-[url('/bg_login.jpg')] bg-cover bg-center">
       <div className="bg-[#181a1ccc] flex flex-col items-center gap-9 rounded-2xl p-10 w-[90%] sm:w-[70%] md:w-[50%]">
-        <img src={logo} alt="Chill Logo" className="logo-img" />
-        <div className="welcome-text">
+        <img src={logo} alt="Chill Logo" className="h-11" />
+        <div className="text-center">
           <h1>{signState}</h1>
-          <h4>Selamat datang{signState === "Masuk" ? " kembali" : ""}!</h4>
+          <h4 className="mt-2 text-base font-light">
+            Selamat datang{signState === "Masuk" ? " kembali" : ""}!
+          </h4>
         </div>
-        <form id="login-form">
+        <form id="login-form" className="flex flex-col w-full">
           <label for="username">Username</label>
           <input
             type="text"

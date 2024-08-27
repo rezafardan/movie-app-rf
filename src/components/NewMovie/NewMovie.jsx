@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import useMovie from "../../hooks/useMovie";
-import "./NewMovie.css";
 import Button from "../AtomicComponent/Button";
 
 const NewMovie = () => {
@@ -19,9 +18,17 @@ const NewMovie = () => {
     e.preventDefault();
 
     try {
-      await addMovie({ title, year, cast, genres, href, extract, thumbnail });
+      await addMovie({
+        title,
+        year,
+        cast: cast.split(","),
+        genres: genres.split(","),
+        href,
+        extract,
+        thumbnail,
+      });
       alert("Data Berhasil di Submit");
-      navigate("/edit-movie/1");
+      navigate("/moviedata");
     } catch (err) {
       console.log(`Error adding movie: ${err}`);
     }

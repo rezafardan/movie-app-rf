@@ -41,7 +41,7 @@ const NavbarAdmin = () => {
           <DropdownLists to="/add-movie" src={logo}>
             Tambah Film
           </DropdownLists>
-          <DropdownLists to="/edit-movie/1" src={edit}>
+          <DropdownLists to="/moviedata" src={edit}>
             Edit Film
           </DropdownLists>
         </div>
