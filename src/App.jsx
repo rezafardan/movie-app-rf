@@ -4,7 +4,6 @@ import Login from "./pages/Login/Login.jsx";
 import Navbar from "./components/AtomicComponent/Navbar/Navbar.jsx";
 import Footer from "./components/Footer/Footer.jsx";
 import Profile from "./components/Profile/Profile.jsx";
-import FilmPage from "./components/FilmPage/FilmPage.jsx";
 import NewMovie from "./components/NewMovie/NewMovie.jsx";
 import MovieData from "./components/EditMovie/MovieData.jsx";
 import FormEditMovie from "./components/EditMovie/FormEditMovie.jsx";
@@ -28,7 +27,6 @@ const App = () => {
             <Layout>
               <Routes>
                 <Route path="/" element={<Home />} />
-                <Route path="/film" element={<FilmPage />} />
                 <Route path="/add-movie" element={<NewMovie />} />
                 <Route path="/moviedata" element={<MovieData />} />
                 <Route path="/formedit/:id" element={<FormEditMovie />} />

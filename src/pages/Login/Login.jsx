@@ -1,11 +1,13 @@
 import React, { useState } from "react";
-import "./Login.css";
 import logo from "../../assets/logo.png";
 import google_logo from "../../assets/google_logo.svg";
 import { Link } from "react-router-dom";
 
 const Login = () => {
   const [signState, setSignState] = useState("Masuk");
+
+  const input =
+    "h-12 bg-transparent rounded-full border px-5 mb-9 text-white text-base font-light";
 
   return (
     <div className="h-screen flex flex-col justify-center items-center bg-[url('/bg_login.jpg')] bg-cover bg-center">
@@ -18,50 +20,63 @@ const Login = () => {
           </h4>
         </div>
         <form id="login-form" className="flex flex-col w-full">
-          <label for="username">Username</label>
+          <label for="username" className="mb-2">
+            Username
+          </label>
           <input
             type="text"
             id="username"
             placeholder="Masukkan username"
+            className={input}
             required
           />
-          <label for="password">Kata Sandi</label>
+          <label for="password" className="mb-2">
+            Kata Sandi
+          </label>
           <input
             type="password"
             id="password"
             placeholder="Masukkan kata sandi"
+            className={input}
             required
           />
           {signState === "Masuk" ? (
             <></>
           ) : (
             <>
-              <label for="password-confirm">Konfirmasi Kata Sandi</label>
+              <label for="password-confirm" className="mb-2">
+                Konfirmasi Kata Sandi
+              </label>
               <input
                 type="password"
                 id="password-confirm"
                 placeholder="Masukkan kata sandi"
+                className={input}
                 required
               />
             </>
           )}
-          <div className="form-help">
+          <div className="flex flex-col gap-2 relative mt-[-25px]">
             {signState === "Masuk" ? (
-              <p>
+              <p className="font-light text-[#c1c2c4]">
                 Belum punya akun ?
                 <span
+                  className="cursor-pointer text-white font-medium ml-2"
                   onClick={() => {
                     setSignState("Daftar");
                   }}
                 >
                   Daftar
                 </span>
-                <span className="forgot-password">Lupa kata sandi?</span>
+                <span className="absolute right-0 cursor-pointer text-white font-medium ml-2">
+                  Lupa kata sandi?
+                </span>
               </p>
             ) : (
-              <p>
+              <p className="font-light text-[#c1c2c4]">
                 Sudah punya akun ?
                 <span
+                  className="cursor-pointer text-white font-medium ml-2"
                   onClick={() => {
                     setSignState("Masuk");
                   }}
@@ -71,14 +86,14 @@ const Login = () => {
               </p>
             )}
           </div>
-          <div className="tombol">
-            <button>
+          <div className="mt-9 flex flex-col justify-center items-center gap-2">
+            <button className="h-12 w-full bg-[#3d4142] rounded-full border px-5 font-normal">
               <Link className="link-style" to="/">
                 {signState}
               </Link>
             </button>
-            <p>Atau</p>
-            <button className="google">
+            <p className="font-light text-[#c1c2c4]">Atau</p>
+            <button className="flex justify-center items-center gap-5 bg-transparent h-12 w-full rounded-full border px-5 font-normal">
               <img src={google_logo} alt="" />
               {signState} dengan Google
             </button>

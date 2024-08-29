@@ -12,7 +12,6 @@ const NavbarLeft = () => {
       </NavbarLink>
       <ul className="flex list-none gap-3 text-sm md:text-base lg:gap-20 md:gap-10">
         <NavbarLink to="/">Home</NavbarLink>
-        <NavbarLink to="/film">Film</NavbarLink>
       </ul>
     </div>
   );

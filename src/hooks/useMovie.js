@@ -7,18 +7,17 @@ import {
 } from "../services/movieSlice";
 import { useEffect } from "react";
 
-// custom Hooks
 const useMovie = () => {
   const dispatch = useDispatch();
   const { movies, loading, error } = useSelector((state) => state.movies);
 
   useEffect(() => {
-    dispatch(fetchMovies());
+    dispatch(fetchMovies()); // kirim action ke store
   }, [dispatch]);
 
   const addNewMovie = async (movieData) => {
     try {
-      await dispatch(addMovie(movieData)).unwrap();
+      await dispatch(addMovie(movieData)).unwrap(); // unwrap ~ dikeluarkan dari promise
     } catch (error) {
       console.log(error);
     }

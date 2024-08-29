@@ -1,6 +1,6 @@
 # Movie App
 
-Movie App adalah aplikasi berbasis React JS yang memungkinkan pengguna untuk mengelola data film dengan fitur CRUD (Create, Read, Update, Delete), menyimpan film ke dalam daftar film favorit menggunakan Redux, dan login pengguna. Aplikasi ini menggunakan pendekatan desain atomic untuk komponen.
+Movie App adalah aplikasi berbasis React JS yang memungkinkan pengguna untuk mengelola data film dengan fitur CRUD (Create, Read, Update, Delete), call API dengan mockapi, dan manajemen state menggunakan Redux. Aplikasi ini menggunakan pendekatan desain atomic untuk komponen.
 
 ## Fitur
 

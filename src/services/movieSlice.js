@@ -15,7 +15,7 @@ const initialState = {
   error: null,
 };
 
-// Thunks
+// Thunks ~ ambil data API (async)
 export const fetchMovies = createAsyncThunk("movies/fetchMovies", async () => {
   const response = await getMovies();
   return response;
@@ -50,7 +50,7 @@ export const removeMovie = createAsyncThunk("movie/removeMovie", async (id) => {
   return id;
 });
 
-// Slice
+// Slice ~ menangani pengelolaan state
 const movieSlice = createSlice({
   name: "movies",
   initialState,
@@ -59,7 +59,8 @@ const movieSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(fetchMovies.fulfilled, (state, action) => {
-        state.movies = action.payload;
+        state.movies = action.payload; // payload isi array data API
+        console.log(action);
       })
       .addCase(fetchMovieById.fulfilled, (state, action) => {
         state.currentMovie = action.payload;
