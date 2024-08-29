@@ -60,7 +60,6 @@ const movieSlice = createSlice({
     builder
       .addCase(fetchMovies.fulfilled, (state, action) => {
         state.movies = action.payload; // payload isi array data API
-        console.log(action);
       })
       .addCase(fetchMovieById.fulfilled, (state, action) => {
         state.currentMovie = action.payload;
