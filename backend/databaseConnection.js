@@ -13,7 +13,7 @@ import dotenv from "dotenv";
  */
 
 // .env file
-// API_URL=http://localhost:7001 ( atau htttp://127.0.0.1:7001 ) | port yang tidak sedang digunakan di PID masing-masing OS
+// VITE_API_URL=http://localhost:7001 ( atau htttp://127.0.0.1:7001 ) | port yang tidak sedang digunakan di PID masing-masing OS
 // DB_HOST=localhost ( atau 127.0.0.1 )
 // DB_USER=root
 // DB_PASSWORD="............" (Local password)

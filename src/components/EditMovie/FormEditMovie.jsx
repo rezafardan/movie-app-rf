@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
-import { fetchMovieById, editMovie } from "../../services/movieSlice";
+import {
+  fetchMovieById,
+  editMovie,
+  fetchMovies,
+} from "../../services/movieSlice";
 import Button from "../AtomicComponent/Button";
 import arrow_back from "../../assets/arrow_back.svg";
 
