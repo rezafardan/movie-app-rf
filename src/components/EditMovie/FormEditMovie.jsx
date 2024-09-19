@@ -12,10 +12,7 @@ const FormEditMovie = () => {
   const movie = useSelector((state) => state.movies.currentMovie);
 
   const [title, setTitle] = useState("");
-  const [year, setYear] = useState("");
-  const [cast, setCast] = useState([]);
-  const [genres, setGenres] = useState([]);
-  const [href, setHref] = useState("");
+  const [years, setYears] = useState("");
   const [extract, setExtract] = useState("");
   const [thumbnail, setThumbnail] = useState("");
 
@@ -26,10 +23,7 @@ const FormEditMovie = () => {
   useEffect(() => {
     if (movie) {
       setTitle(movie.title || "");
-      setYear(movie.year || "");
-      setCast(movie.cast || []);
-      setGenres(movie.genres || []);
-      setHref(movie.href || "");
+      setYears(movie.years || "");
       setExtract(movie.extract || "");
       setThumbnail(movie.thumbnail || "");
     }
@@ -39,14 +33,21 @@ const FormEditMovie = () => {
     e.preventDefault();
     if (window.confirm("Apakah kamu yakin akan merubah data film?")) {
       try {
+        // Tunggu hingga aksi editMovie selesai
         await dispatch(
           editMovie({
             id,
-            updateData: { title, year, cast, genres, href, extract, thumbnail },
+            updateData: {
+              title,
+              years,
+              extract,
+              thumbnail,
+            },
           })
         );
         alert("Update data berhasil");
         navigate("/moviedata");
+        await dispatch(fetchMovies());
       } catch (err) {
         console.error("Error updating movie:", err);
       }
@@ -88,76 +89,18 @@ const FormEditMovie = () => {
 
           <div>
             <label
-              htmlFor="year"
+              htmlFor="years"
               className="block mb-2 text-sm font-medium text-white"
             >
               Tahun Film:
             </label>
             <input
               type="number"
-              id="year"
-              value={year}
+              id="years"
+              value={years}
               className="bg-transparent border border-gray-300 text-white text-sm rounded-full block w-full p-2.5"
               placeholder="Tahun film dibuat..."
-              onChange={(e) => setYear(e.target.value)}
-              required
-            />
-          </div>
-
-          <div>
-            <label
-              htmlFor="cast"
-              className="block mb-2 text-sm font-medium text-white"
-            >
-              Cast:
-            </label>
-            <input
-              type="text"
-              id="cast"
-              value={cast}
-              className="bg-transparent border border-gray-300 text-white text-sm rounded-full block w-full p-2.5"
-              placeholder="Aktor/Aktris pemeran film..."
-              onChange={(e) =>
-                setCast(e.target.value.split(",").map((item) => item.trim()))
-              }
-              required
-            />
-          </div>
-
-          <div>
-            <label
-              htmlFor="genres"
-              className="block mb-2 text-sm font-medium text-white"
-            >
-              Genres:
-            </label>
-            <input
-              type="text"
-              id="genres"
-              value={genres}
-              className="bg-transparent border border-gray-300 text-white text-sm rounded-full block w-full p-2.5"
-              placeholder="Genre film..."
-              onChange={(e) =>
-                setGenres(e.target.value.split(",").map((item) => item.trim()))
-              }
-              required
-            />
-          </div>
-
-          <div>
-            <label
-              htmlFor="href"
-              className="block mb-2 text-sm font-medium text-white"
-            >
-              Judul Film Referensi:
-            </label>
-            <input
-              type="text"
-              id="href"
-              value={href}
-              className="bg-transparent border border-gray-300 text-white text-sm rounded-full block w-full p-2.5"
-              placeholder="Referensi judul film..."
-              onChange={(e) => setHref(e.target.value)}
+              onChange={(e) => setYears(e.target.value)}
               required
             />
           </div>
@@ -194,7 +137,7 @@ const FormEditMovie = () => {
               value={thumbnail}
               className="bg-transparent border border-gray-300 text-white text-sm rounded-full block w-full p-2.5"
               placeholder="Link poster film..."
-              onChange={(e) => setThumnail(e.target.value)}
+              onChange={(e) => setThumbnail(e.target.value)}
               required
             />
           </div>

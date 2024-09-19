@@ -19,6 +19,7 @@ const MovieData = () => {
     if (id) {
       dispatch(fetchMovieById(id));
     }
+    console.log(movies);
   }, [id, dispatch]);
 
   const handleEdit = (id) => {

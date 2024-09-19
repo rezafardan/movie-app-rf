@@ -5,10 +5,8 @@ import Button from "../AtomicComponent/Button";
 
 const NewMovie = () => {
   const [title, setTitle] = useState("");
-  const [year, setYear] = useState("");
-  const [cast, setCast] = useState([]);
-  const [genres, setGenres] = useState([]);
-  const [href, setHref] = useState("");
+  const [years, setYears] = useState("");
+
   const [extract, setExtract] = useState("");
   const [thumbnail, setThumnail] = useState("");
   const navigate = useNavigate();
@@ -20,10 +18,7 @@ const NewMovie = () => {
     try {
       await addMovie({
         title,
-        year,
-        cast: cast.split(","),
-        genres: genres.split(","),
-        href,
+        years,
         extract,
         thumbnail,
       });
@@ -61,72 +56,18 @@ const NewMovie = () => {
 
           <div>
             <label
-              htmlFor="year"
+              htmlFor="years"
               className="block mb-2 text-sm font-medium text-white"
             >
               Tahun Film:
             </label>
             <input
               type="number"
-              id="year"
-              value={year}
+              id="years"
+              value={years}
               className="bg-transparent border border-gray-300 text-white text-sm rounded-full block w-full p-2.5"
               placeholder="Tahun film dibuat..."
-              onChange={(e) => setYear(e.target.value)}
-              required
-            />
-          </div>
-
-          <div>
-            <label
-              htmlFor="cast"
-              className="block mb-2 text-sm font-medium text-white"
-            >
-              Cast:
-            </label>
-            <input
-              type="text"
-              id="cast"
-              value={cast}
-              className="bg-transparent border border-gray-300 text-white text-sm rounded-full block w-full p-2.5"
-              placeholder="Aktor/Aktris pemeran film..."
-              onChange={(e) => setCast(e.target.value)}
-              required
-            />
-          </div>
-
-          <div>
-            <label
-              htmlFor="genres"
-              className="block mb-2 text-sm font-medium text-white"
-            >
-              Genres:
-            </label>
-            <input
-              type="text"
-              id="genres"
-              value={genres}
-              className="bg-transparent border border-gray-300 text-white text-sm rounded-full block w-full p-2.5"
-              placeholder="Genre film..."
-              onChange={(e) => setGenres(e.target.value)}
-              required
-            />
-          </div>
-
-          <div>
-            <label
-              htmlFor="href"
-              className="block mb-2 text-sm font-medium text-white"
-            >
-              Judul Film Referensi:
-            </label>
-            <input
-              type="text"
-              id="href"
-              value={href}
-              className="bg-transparent border border-gray-300 text-white text-sm rounded-full block w-full p-2.5"
-              placeholder="Referensi judul film..."
-              onChange={(e) => setHref(e.target.value)}
+              onChange={(e) => setYears(e.target.value)}
               required
             />
           </div>

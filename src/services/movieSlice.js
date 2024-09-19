@@ -22,7 +22,7 @@ export const fetchMovies = createAsyncThunk("movies/fetchMovies", async () => {
 });
 
 export const fetchMovieById = createAsyncThunk(
-  "movies/fetchMovieById",
+  "movie/fetchMovieById",
   async (id) => {
     const response = await getMovieById(id);
     return response;
@@ -30,7 +30,7 @@ export const fetchMovieById = createAsyncThunk(
 );
 
 export const addMovie = createAsyncThunk(
-  "movies/addMovie",
+  "movie/addMovie",
   async (movieData) => {
     const response = await createMovie(movieData);
     return response;
@@ -38,7 +38,7 @@ export const addMovie = createAsyncThunk(
 );
 
 export const editMovie = createAsyncThunk(
-  "movies/editMovie",
+  "movie/editMovie",
   async ({ id, updateData }) => {
     const response = await updateMovie(id, updateData);
     return response;

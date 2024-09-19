@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import useMovie from "../../../hooks/useMovie";
-import hover_img from "../../../assets/hover_img.png";
 import HoverPoster from "./HoverPoster";
 import Loading from "../Loading";
 import Error from "../Error";
