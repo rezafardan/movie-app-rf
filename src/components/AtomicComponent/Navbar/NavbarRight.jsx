@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import profile_img from "../../../assets/profile-img.png";
 import caret_icon from "../../../assets/caret_icon.svg";
 import dd_profile_icon from "../../../assets/dropdown/dd_profile_icon.svg";
@@ -6,10 +6,17 @@ import dd_star_icon from "../../../assets/dropdown/dd_star_icon.svg";
 import dd_logout_icon from "../../../assets/dropdown/dd_logout_icon.svg";
 import DropdownLists from "./DropdownLists";
 import NavbarAdmin from "./NavbarAdmin";
+import { useNavigate } from "react-router-dom";
 
 const NavbarRight = () => {
   const [dropdownVisible, setDropdownVisible] = useState(false);
   const dropdownRef = useRef(null);
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    localStorage.clear(); // Clear all items in localStorage
+    navigate("/login"); // Redirect to login page
+  };
 
   const handleClickOut = (event) => {
     if (
@@ -53,7 +60,7 @@ const NavbarRight = () => {
               Profil Saya
             </DropdownLists>
             <DropdownLists src={dd_star_icon}>Ubah Premium</DropdownLists>
-            <DropdownLists src={dd_logout_icon} to="/login">
+            <DropdownLists src={dd_logout_icon} onClick={handleLogout}>
               Keluar
             </DropdownLists>
           </div>
