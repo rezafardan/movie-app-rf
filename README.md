@@ -1,37 +1,35 @@
-# Movie App
+# Movie App Website
 
-Movie App adalah aplikasi berbasis React JS yang memungkinkan pengguna untuk mengelola data film dengan fitur CRUD (Create, Read, Update, Delete), call API dengan mockapi, dan manajemen state menggunakan Redux. Aplikasi ini menggunakan pendekatan desain atomic untuk komponen.
+## _Platform Web untuk Menampilkan dan Mengelola Data Film_
 
-## Fitur
+Movie App adalah sebuah platform web yang memungkinkan pengguna untuk melihat daftar film yang menampilkan poster, judul, dan deskripsi. Pengguna dapat melakukan registrasi, login, serta mengelola (CRUD) data film dengan keamanan berbasis token JWT. Aplikasi ini dibangun menggunakan teknologi React.js, Tailwind CSS, Express.js, dan MySQL.
 
-- **CRUD Movie Data**: Tambah, baca, perbarui, dan hapus data film.
-- **Favorit Film**: Simpan film ke dalam daftar favorit menggunakan Redux.
-- **Login Pengguna**: Fitur login untuk mengakses aplikasi.
-- **Desain Atomic**: Komponen dibangun dengan pendekatan desain atomic.
+## Fitur Utama
 
-## Teknologi yang Digunakan
+- Registrasi dan login pengguna dengan keamanan berbasis token JWT.
+- Menampilkan daftar film lengkap dengan poster, judul, dan deskripsi.
+- CRUD film (Create, Read, Update, Delete).
+- Pengelolaan pengguna dengan hashing password menggunakan bcrypt.
+- Koneksi ke database MySQL untuk penyimpanan data.
 
-- **React JS**: Library untuk membangun antarmuka pengguna.
-- **Redux**: Manajemen state global.
-- **React Router**: Routing untuk navigasi aplikasi.
-- **Axios**: Untuk melakukan permintaan HTTP.
-- **MockAPI**: Untuk penyedia data API.
-- **React Hooks**: Untuk pengelolaan state dan efek samping.
-- **Redux Toolkit**: Untuk pengelolaan state Redux.
-- **LocalStorage**: Untuk menyimpan data favorit.
+## Teknologi
 
-## Struktur Folder
+Movie App memanfaatkan berbagai teknologi open-source agar berjalan dengan baik:
 
-- On going
+### Frontend:
 
-## Instalasi
+- **React.js**: Library untuk membangun antarmuka pengguna (UI).
+- **Tailwind CSS**: Framework CSS untuk styling yang cepat dan efisien.
+- **Axios**: Library untuk menangani request HTTP.
+- **Redux**: Library untuk state management aplikasi.
+- **Vite**: Build tool untuk pengembangan frontend yang cepat.
 
-```bash
-git clone https://github.com/rezafardan/movie-app-rf
+### Backend:
 
-cd movie-app-rf
-
-npm install
-
-npm start
-```
+- **Node.js**: Evented I/O untuk backend.
+- **Express**: Framework untuk membangun REST API.
+- **MySQL**: Database yang digunakan untuk menyimpan data pengguna dan film.
+- **bcrypt.js**: Untuk hashing password pengguna.
+- **dotenv**: Untuk mengelola konfigurasi environment.
+- **CORS**: Middleware untuk menangani akses API lintas domain.
+- **JWT (JSON Web Token)**: Digunakan untuk autentikasi berbasis token.

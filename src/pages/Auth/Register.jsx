@@ -23,7 +23,7 @@ const Login = () => {
 
     try {
       // Kirim data ke endpoint register menggunakan axiosIstance
-      const response = await axiosIstance.post("/register", {
+      const response = await axiosIstance.post("/auth/register", {
         fullname,
         username,
         password,

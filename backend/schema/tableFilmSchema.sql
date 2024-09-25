@@ -121,12 +121,3 @@ VALUES (
 );
 
 
-USE movie_app;
-
-CREATE TABLE user (
-    id INT PRIMARY KEY AUTO_INCREMENT,
-    fullname VARCHAR(100) NOT NULL,
-    username VARCHAR(50) NOT NULL UNIQUE,
-    password VARCHAR(255) NOT NULL,
-    email VARCHAR(100) NOT NULL UNIQUE
-);

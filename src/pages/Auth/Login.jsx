@@ -14,9 +14,13 @@ const Login = () => {
     e.preventDefault();
 
     try {
-      const response = await axiosIstance.post("login", { email, password });
+      const response = await axiosIstance.post("/auth/login", {
+        email,
+        password,
+      });
 
       const { token, user } = response.data;
+      console.log(response.data);
       localStorage.setItem("token", token);
 
       console.log("Login berhasil ", user, "dengan token ", token);

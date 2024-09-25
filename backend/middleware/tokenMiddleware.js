@@ -7,18 +7,20 @@ const tokenVerify = (req, res, next) => {
   const authHeader = req.headers["authorization"];
 
   if (!authHeader) {
-    return res.status(403).json({ message: "No token provided" });
+    return res.status(403).json({ message: "Token tidak tersedia" });
   }
 
   const tokenParts = authHeader.split(" ");
   if (tokenParts.length !== 2 || tokenParts[0] !== "Bearer") {
-    return res.status(403).json({ message: "Invalid token format" });
+    return res.status(403).json({ message: "Format token tidak valid" });
   }
 
-  const token = tokenParts[1]; // Get the actual token
+  const token = tokenParts[1];
   jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
     if (err) {
-      return res.status(401).json({ message: "Unauthorized or invalid token" });
+      return res
+        .status(401)
+        .json({ message: "Token tidak sah atau tidak valid" });
     }
 
     req.user = decoded;
@@ -26,4 +28,4 @@ const tokenVerify = (req, res, next) => {
   });
 };
 
-export default tokenVerify;
+export default { tokenVerify };
