@@ -29,10 +29,10 @@ const databaseConnection = mysql.createConnection({
 
 databaseConnection.connect((err) => {
   if (err) {
-    console.log("Error Connecting to MySql Database", err);
+    console.log("Kesalahan koneksi ke database MySql", err);
     return;
   }
-  console.log("MySql Database Connected");
+  console.log("Terkoneksi ke Database MySql");
 });
 
 export default databaseConnection;

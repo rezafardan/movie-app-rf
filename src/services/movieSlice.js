@@ -15,16 +15,34 @@ const initialState = {
   error: null,
 };
 
+const token = localStorage.getItem("token");
+
 // Thunks ~ ambil data API (async)
-export const fetchMovies = createAsyncThunk("movies/fetchMovies", async () => {
-  const response = await getMovies();
-  return response;
-});
+export const fetchMovies = createAsyncThunk(
+  "movies/fetchMovies",
+  async ({ title = "", years = "", sortBy = "title", order = "asc" } = {}) => {
+    let query = `/movies?`;
+
+    if (title) {
+      query += `title=${title}&`;
+    }
+
+    if (years) {
+      query += `years=${years}&`;
+    }
+
+    query += `_sort=${sortBy}&_order=${order}`;
+
+    const response = await getMovies(query, token);
+
+    return response;
+  }
+);
 
 export const fetchMovieById = createAsyncThunk(
   "movie/fetchMovieById",
   async (id) => {
-    const response = await getMovieById(id);
+    const response = await getMovieById(id, token);
     return response;
   }
 );
@@ -32,7 +50,7 @@ export const fetchMovieById = createAsyncThunk(
 export const addMovie = createAsyncThunk(
   "movie/addMovie",
   async (movieData) => {
-    const response = await createMovie(movieData);
+    const response = await createMovie(movieData, token);
     return response;
   }
 );
@@ -40,13 +58,13 @@ export const addMovie = createAsyncThunk(
 export const editMovie = createAsyncThunk(
   "movie/editMovie",
   async ({ id, updateData }) => {
-    const response = await updateMovie(id, updateData);
+    const response = await updateMovie(id, updateData, token);
     return response;
   }
 );
 
 export const removeMovie = createAsyncThunk("movie/removeMovie", async (id) => {
-  await deleteMovie(id);
+  await deleteMovie(id, token);
   return id;
 });
 
@@ -84,6 +102,7 @@ const movieSlice = createSlice({
         state.error = action.error.message;
       })
       .addCase(fetchMovieById.rejected, (state, action) => {
+        console.log(state);
         state.error = action.error.message;
       })
       .addCase(addMovie.rejected, (state, action) => {

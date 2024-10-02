@@ -8,13 +8,10 @@ const axiosIstance = axios.create({
 
 axiosIstance.interceptors.request.use(
   (config) => {
-    const token = localStorage.getItem("token");
-    if (token) {
-      config.headers["Authorization"] = `Bearer ${token}`;
-    }
     return config;
   },
   (error) => {
+    console.error("Kesalahan API:", error);
     return Promise.reject(error);
   }
 );

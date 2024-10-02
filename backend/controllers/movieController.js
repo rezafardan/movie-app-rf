@@ -1,12 +1,44 @@
-import databaseConnection from "../databaseConnection.js";
+import databaseConnection from "../databaseConnection.js"; // buat koneksi ke database untuk menjalankan query
 
 // Endpoint CRUD
 const getAllMovies = (req, res) => {
-  const query = "SELECT * FROM film;";
+  let query = "SELECT * FROM film WHERE 1=1";
+  const params = [];
 
-  databaseConnection.query(query, (err, result) => {
+  // filter tahun, jika ada parameter years
+  if (req.query.years) {
+    query += " AND years = ?";
+    params.push(req.query.years);
+  }
+
+  // filter judul, jika ada parameter title
+  if (req.query.title) {
+    query += " AND title LIKE ?";
+    params.push(`%${req.query.title}%`);
+  }
+
+  // filter genre, jika ada parameter genre
+  if (req.query.genre) {
+    query += " AND genre = ?";
+    params.push(req.query.genre);
+  }
+
+  // sorting by coloumn
+  if (req.query._sort) {
+    const validSortColumns = ["title", "years"]; // kalau ada parameter _sort maka akan ada ORDER BY
+    if (validSortColumns.includes(req.query._sort)) {
+      const sortColumn = req.query._sort;
+      const sortOrder = req.query._order === "desc" ? "DESC" : "ASC";
+      query += ` ORDER BY ${sortColumn} ${sortOrder}`;
+    }
+  }
+
+  console.log("Eksekusi kueri:", query, "Dengan Parameter:", params);
+
+  databaseConnection.query(query, params, (err, result) => {
     if (err) {
-      res.status(500).send({ error: "Error eksekusi query" });
+      console.error("Kesalahan kueri database:", err);
+      res.status(500).send({ error: "Kesalahan eksekusi kueri" });
       return;
     }
     res.json(result);
@@ -16,6 +48,7 @@ const getAllMovies = (req, res) => {
 const getMovieById = (req, res) => {
   const { id } = req.params;
   const query = "SELECT * FROM film WHERE id = ?";
+
   databaseConnection.query(query, [id], (err, result) => {
     if (err) {
       return res
@@ -40,6 +73,7 @@ const createMovie = (req, res) => {
 
   const query =
     "INSERT INTO film (title, years, extract, thumbnail) VALUES (?, ?, ?, ?)";
+
   databaseConnection.query(
     query,
     [title, years, extract, thumbnail],

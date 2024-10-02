@@ -10,6 +10,7 @@ import NewMovie from "./components/NewMovie/NewMovie.jsx";
 import MovieData from "./components/EditMovie/MovieData.jsx";
 import FormEditMovie from "./components/EditMovie/FormEditMovie.jsx";
 import NotFound from "./pages/NotFound.jsx";
+import VerifyEmail from "./pages/Auth/VerifyEmail.jsx";
 
 const Layout = ({ children }) => (
   <>
@@ -22,6 +23,7 @@ const Layout = ({ children }) => (
 const App = () => {
   return (
     <Routes>
+      <Route path="/verify-email" element={<VerifyEmail />} />
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
       <Route

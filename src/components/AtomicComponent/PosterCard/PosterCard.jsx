@@ -34,9 +34,9 @@ const PosterCard = () => {
               alt={`${movie.title} image not found or broken`}
               className="rounded-md absolute inset-0 object-cover object-center w-full h-full"
             />
-            <HoverPoster src={movie.thumbnail} title={movie.title}>
+            {/* <HoverPoster src={movie.thumbnail} title={movie.title}>
               {movie.title}
-            </HoverPoster>
+            </HoverPoster> */}
           </div>
         );
       })}

@@ -1,5 +1,5 @@
 import express from "express";
-import tokenMiddleware from "../middleware/tokenMiddleware.js";
+import tokenMiddleware from "../middleware/tokenMiddleware.js"; // middleware agar klien tidak bisa akses isi web saat belum login
 import movieController from "../controllers/movieController.js";
 
 const router = express.Router();

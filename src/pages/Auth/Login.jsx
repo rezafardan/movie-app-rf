@@ -3,9 +3,12 @@ import logo from "../../assets/logo.png";
 import google_logo from "../../assets/google_logo.svg";
 import { useNavigate } from "react-router-dom";
 import axiosIstance from "../../axiosConfig";
+import { setUser } from "../../services/userSlice";
+import { useDispatch } from "react-redux";
 
 const Login = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
@@ -22,8 +25,9 @@ const Login = () => {
       const { token, user } = response.data;
       console.log(response.data);
       localStorage.setItem("token", token);
+      localStorage.setItem("user", JSON.stringify(user));
 
-      console.log("Login berhasil ", user, "dengan token ", token);
+      dispatch(setUser(user));
       navigate("/");
     } catch (error) {
       if (error.response) {
