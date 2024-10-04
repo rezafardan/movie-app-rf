@@ -4,7 +4,7 @@ import {
   addMovie,
   editMovie,
   removeMovie,
-} from "../services/movieSlice";
+} from "../slices/movieSlice";
 import { useEffect } from "react";
 
 const useMovie = () => {
@@ -12,12 +12,12 @@ const useMovie = () => {
   const { movies, loading, error } = useSelector((state) => state.movies);
 
   useEffect(() => {
-    dispatch(fetchMovies()); // kirim action ke store
+    dispatch(fetchMovies());
   }, [dispatch]);
 
   const addNewMovie = async (movieData) => {
     try {
-      await dispatch(addMovie(movieData)).unwrap(); // unwrap ~ dikeluarkan dari promise
+      await dispatch(addMovie(movieData)).unwrap();
     } catch (error) {
       console.log(error);
     }

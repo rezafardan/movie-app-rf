@@ -2,13 +2,13 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const userSlice = createSlice({
   name: "user",
-  initialState: null, // State untuk menyimpan data pengguna
+  initialState: null,
   reducers: {
     setUser(state, action) {
-      return action.payload; // Set data pengguna
+      return action.payload;
     },
     clearUser(state) {
-      return null; // Hapus data pengguna
+      return null;
     },
   },
 });

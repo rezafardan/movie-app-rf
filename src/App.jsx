@@ -1,6 +1,6 @@
 import Home from "./pages/Home/Home.jsx";
-import { Routes, Route, Outlet, Navigate } from "react-router-dom";
-import RouteProtect from "./services/RouteProtect.jsx";
+import { Routes, Route, Outlet } from "react-router-dom";
+import RouteProtect from "./services/RouteProtectService.jsx";
 import Register from "./pages/Auth/Register.jsx";
 import Login from "./pages/Auth/Login.jsx";
 import Navbar from "./components/AtomicComponent/Navbar/Navbar.jsx";
@@ -12,7 +12,7 @@ import FormEditMovie from "./components/EditMovie/FormEditMovie.jsx";
 import NotFound from "./pages/NotFound.jsx";
 import VerifyEmail from "./pages/Auth/VerifyEmail.jsx";
 
-const Layout = ({ children }) => (
+const Layout = () => (
   <>
     <Navbar />
     <Outlet />

@@ -33,3 +33,19 @@ Movie App memanfaatkan berbagai teknologi open-source agar berjalan dengan baik:
 - **dotenv**: Untuk mengelola konfigurasi environment.
 - **CORS**: Middleware untuk menangani akses API lintas domain.
 - **JWT (JSON Web Token)**: Digunakan untuk autentikasi berbasis token.
+
+/_
+** menggunakan Node JS (Install node.js)
+** menggunakan MySql (Install MySql)
+** setelah menginstall semua, lanjutkan dengan `npm run dev' dan
+** cd /backend ~> `node databaseConnection.js` di terminal / command prompt untuk memulai koneksi ke database MySql
+** untuk create database bisa login ke MySql dan copy paste kan seluruh code yang ada di di schema.sql
+** jangan lupa untuk buat file .env bila tidak ada
+_/
+
+// .env file
+// VITE_API_URL=http://localhost:7001 ( atau htttp://127.0.0.1:7001 ) | port yang tidak sedang digunakan di PID masing-masing OS
+// DB_HOST=localhost ( atau 127.0.0.1 )
+// DB_USER=root
+// DB_PASSWORD="............" (Local password)
+// DB_DATABASE=movie_app

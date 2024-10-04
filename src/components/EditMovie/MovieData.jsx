@@ -5,14 +5,14 @@ import {
   fetchMovies,
   fetchMovieById,
   removeMovie,
-} from "../../services/movieSlice";
+} from "../../slices/movieSlice";
 import Button from "../AtomicComponent/Button";
 
 const MovieData = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const movies = useSelector((state) => state.movies.movies); // Semua data film dari state
+  const movies = useSelector((state) => state.movies.movies);
 
   const [title, setTitle] = useState("");
   const [years, setYears] = useState("");
@@ -53,36 +53,38 @@ const MovieData = () => {
   return (
     <div className="mt-20 md:mt-32 px-[4%] md:mx-[8%]">
       <div className="text-center text-2xl font-bold mb-4">Daftar Film</div>
-      <input
-        type="text"
-        placeholder="Cari film berdasarkan judul..."
-        value={title}
-        onChange={(e) => setTitle(e.target.value)}
-        className="mb-4 p-2 border rounded-md w-full md:w-1/2 text-black"
-      />
-      <input
-        type="text"
-        placeholder="Cari film berdasarkan tahun..."
-        value={years}
-        onChange={(e) => setYears(e.target.value)}
-        className="mb-4 p-2 border rounded-md w-full md:w-1/2 text-black"
-      />
-      <select
-        value={sortBy}
-        onChange={(e) => setSortBy(e.target.value)}
-        className="border rounded px-2 py-1"
-      >
-        <option value="title">Judul</option>
-        <option value="years">Tahun</option>
-      </select>
-      <select
-        value={order}
-        onChange={(e) => setOrder(e.target.value)}
-        className="border rounded px-2 py-1 mx-2"
-      >
-        <option value="asc">Asc</option>
-        <option value="desc">Desc</option>
-      </select>
+      <div className="flex gap-4">
+        <input
+          type="text"
+          placeholder="Cari film berdasarkan judul..."
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+          className="mb-4 w-1/3 p-2 flex-auto rounded border border-solid border-neutral-300 bg-transparent text-xs font-normal  text-white outline-none transition duration-200 ease-in-out focus:z-[3] focus:border-primary focus:text-white focus:outline-none"
+        />
+        <input
+          type="text"
+          placeholder="Cari film berdasarkan tahun..."
+          value={years}
+          onChange={(e) => setYears(e.target.value)}
+          className="mb-4 w-1/3 p-2 flex-auto rounded border border-solid border-neutral-300 bg-transparent text-xs font-normal  text-white outline-none transition duration-200 ease-in-out focus:z-[3] focus:border-primary focus:text-white focus:outline-none"
+        />
+        <select
+          value={sortBy}
+          onChange={(e) => setSortBy(e.target.value)}
+          className="mb-4 w-1/6 p-2 flex-auto rounded border border-solid border-neutral-300 bg-transparent text-xs font-normal  text-white outline-none transition duration-200 ease-in-out focus:z-[3] focus:border-primary focus:text-white focus:outline-none"
+        >
+          <option value="title">Judul</option>
+          <option value="years">Tahun</option>
+        </select>
+        <select
+          value={order}
+          onChange={(e) => setOrder(e.target.value)}
+          className="mb-4 w-1/6 p-2 flex-auto rounded border border-solid border-neutral-300 bg-transparent text-xs font-normal  text-white outline-none transition duration-200 ease-in-out focus:z-[3] focus:border-primary focus:text-white focus:outline-none"
+        >
+          <option value="asc">Naik</option>
+          <option value="desc">Turun</option>
+        </select>
+      </div>
 
       {error && <div className="text-red-500 mb-4">{error}</div>}
 

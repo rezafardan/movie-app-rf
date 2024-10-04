@@ -1,5 +1,5 @@
-import bcrypt from "bcryptjs"; // library hashing password
-import jwt from "jsonwebtoken"; // library membuat token
+import bcrypt from "bcryptjs";
+import jwt from "jsonwebtoken";
 import { v4 as uuidv4 } from "uuid";
 import nodemailer from "nodemailer";
 import dotenv from "dotenv";
@@ -7,21 +7,18 @@ import databaseConnection from "../databaseConnection.js";
 
 dotenv.config({ path: "../../.env" });
 
-// https://security.google.com/settings/security/apppasswords
-
-// Registration
 const Register = async (req, res) => {
   const { fullname, username, password, email } = req.body;
 
   try {
-    const salt = await bcrypt.genSalt(10); // menghasilkan nilai acak untuk keamanan
-    const hashedPassword = await bcrypt.hash(password, salt); // hasing dari password menggunakan salt diatas
+    const salt = await bcrypt.genSalt(10);
+    const hashedPassword = await bcrypt.hash(password, salt);
     const verificationToken = uuidv4();
 
     console.log(verificationToken);
 
     const query =
-      "INSERT INTO user (fullname, username, password, email, verification_token, is_verified) VALUES (?, ?, ?, ?, ?, FALSE)"; // pakai ? agar menghindari SQL Injection
+      "INSERT INTO user (fullname, username, password, email, verification_token, is_verified) VALUES (?, ?, ?, ?, ?, FALSE)";
     const values = [
       fullname,
       username,
@@ -68,8 +65,8 @@ const Register = async (req, res) => {
       await transporter.sendMail(mailOptions);
       console.log("Email terkirim");
       return res.status(201).json({
-        message:
-          "Pengguna berhasil terdaftar, silakan periksa email Anda untuk verifikasi.",
+        message: `Pengguna berhasil terdaftar, silakan periksa email Anda untuk verifikasi. Silahkan verifikasi email dengan membuka tautan berikut ${process.env.VITE_API_URL}/auth/verify-email?token=${verificationToken}`,
+        verificationToken,
       });
     } catch (emailError) {
       console.log("Terjadi kesalahan saat mengirim email: ", emailError);
@@ -84,24 +81,23 @@ const Register = async (req, res) => {
   }
 };
 
-// Login
 const Login = async (req, res) => {
-  const { email, password } = req.body; // destrukturing isi body
+  const { email, password } = req.body;
 
   console.log("Ini isi dari email", email);
 
   try {
-    const query = "SELECT * FROM user WHERE email = ?"; // cari data berdasarkan email
+    const query = "SELECT * FROM user WHERE email = ?";
     databaseConnection.query(query, [email], async (err, results) => {
       if (err) {
         console.error("Kesalahan database", err);
-        return res.status(500).json({ message: "Kesalahan database" }); // kode 500 server error
+        return res.status(500).json({ message: "Kesalahan database" });
       }
       if (results.length === 0) {
-        return res.status(401).json({ message: "Email atau password salah" }); // kode 401 unauthorized
+        return res.status(401).json({ message: "Email atau password salah" });
       }
 
-      const user = results[0]; // result dari callback
+      const user = results[0];
 
       if (!user.is_verified) {
         return res.status(403).json({
@@ -109,12 +105,11 @@ const Login = async (req, res) => {
         });
       }
 
-      const isMatch = await bcrypt.compare(password, user.password); // variabel compare password dari req.body dengan hasil callback
+      const isMatch = await bcrypt.compare(password, user.password);
       if (!isMatch) {
-        return res.status(401).json({ message: "Email atau password salah" }); // kode 401 unauthorized
+        return res.status(401).json({ message: "Email atau password salah" });
       }
 
-      // jika password cocok lanjut membuat token, isi id pengguna
       const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, {
         expiresIn: "1h",
       });
@@ -129,8 +124,8 @@ const Login = async (req, res) => {
     });
   } catch (error) {
     console.error("Kesalahan saat masuk", error);
-    res.status(500).json({ message: "Kesalahan server" }); // kode 500 server error
+    res.status(500).json({ message: "Kesalahan server" });
   }
 };
 
-export default { Register, Login }; // controller ini akan digunakan di authRoutes
+export default { Register, Login };

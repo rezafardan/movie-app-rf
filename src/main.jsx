@@ -8,9 +8,6 @@ import store from "./store/redux/store.js";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    {/* selanjutnya hubungkan store.js ke root aplikasi (index.js / main.js)
-    menggunakan provider ( provider akan menyediakan akses ke state store untuk
-    seluruh komponen didalamnya) */}
     <Provider store={store}>
       <BrowserRouter>
         <App />

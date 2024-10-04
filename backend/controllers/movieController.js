@@ -1,31 +1,26 @@
-import databaseConnection from "../databaseConnection.js"; // buat koneksi ke database untuk menjalankan query
+import databaseConnection from "../databaseConnection.js";
 
-// Endpoint CRUD
 const getAllMovies = (req, res) => {
   let query = "SELECT * FROM film WHERE 1=1";
   const params = [];
 
-  // filter tahun, jika ada parameter years
   if (req.query.years) {
     query += " AND years = ?";
     params.push(req.query.years);
   }
 
-  // filter judul, jika ada parameter title
   if (req.query.title) {
     query += " AND title LIKE ?";
     params.push(`%${req.query.title}%`);
   }
 
-  // filter genre, jika ada parameter genre
   if (req.query.genre) {
     query += " AND genre = ?";
     params.push(req.query.genre);
   }
 
-  // sorting by coloumn
   if (req.query._sort) {
-    const validSortColumns = ["title", "years"]; // kalau ada parameter _sort maka akan ada ORDER BY
+    const validSortColumns = ["title", "years"];
     if (validSortColumns.includes(req.query._sort)) {
       const sortColumn = req.query._sort;
       const sortOrder = req.query._order === "desc" ? "DESC" : "ASC";

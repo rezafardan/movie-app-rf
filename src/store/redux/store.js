@@ -1,8 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
-// setelah itu daftarkan reducer yang dibuat ke dalam store.js
-import movieReducer from "../../services/movieSlice";
-import fileUploadReducer from "../../services/fileUploadSlice";
-import userReducer from "../../services/userSlice";
+import movieReducer from "../../slices/movieSlice";
+import fileUploadReducer from "../../slices/fileUploadSlice";
+import userReducer from "../../slices/userSlice";
 
 const store = configureStore({
   reducer: {

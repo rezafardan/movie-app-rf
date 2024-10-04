@@ -5,7 +5,7 @@ import {
   fetchMovieById,
   editMovie,
   fetchMovies,
-} from "../../services/movieSlice";
+} from "../../slices/movieSlice";
 import Button from "../AtomicComponent/Button";
 import arrow_back from "../../assets/arrow_back.svg";
 
@@ -37,7 +37,6 @@ const FormEditMovie = () => {
     e.preventDefault();
     if (window.confirm("Apakah kamu yakin akan merubah data film?")) {
       try {
-        // Tunggu hingga aksi editMovie selesai
         await dispatch(
           editMovie({
             id,

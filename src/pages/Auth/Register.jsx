@@ -17,12 +17,11 @@ const Login = () => {
     e.preventDefault();
 
     if (password !== passwordConfirm) {
-      console.log("Passwords do not match");
+      console.log("Password tidak sama");
       return;
     }
 
     try {
-      // Kirim data ke endpoint register menggunakan axiosIstance
       const response = await axiosIstance.post("/auth/register", {
         fullname,
         username,
@@ -30,20 +29,16 @@ const Login = () => {
         email,
       });
 
-      // Misalnya setelah sukses, arahkan ke halaman login
       console.log("User registered:", response.data);
       navigate("/login");
     } catch (err) {
       if (err.response) {
-        // Server responded with a status other than 200 range
-        console.log(`Error: ${err.response.data.message}`);
-        console.log(`Status Code: ${err.response.status}`);
+        console.log(`Kesalahan: ${err.response.data.message}`);
+        console.log(`Kode Status: ${err.response.status}`);
       } else if (err.request) {
-        // Request was made but no response was received
-        console.log(`Request Error: ${err.request}`);
+        console.log(`Kesalahan permintaan: ${err.request}`);
       } else {
-        // Something happened in setting up the request that triggered an Error
-        console.log(`Error: ${err.message}`);
+        console.log(`Kesalahan: ${err.message}`);
       }
     }
   };
@@ -56,8 +51,8 @@ const Login = () => {
     "h-12 bg-transparent rounded-full border px-5 mb-9 text-white text-base font-light";
 
   return (
-    <div className="h-screen flex flex-col justify-center items-center bg-[url('/bg_login.jpg')] bg-cover bg-center">
-      <div className="bg-[#181a1ccc] flex flex-col items-center gap-9 rounded-2xl p-10 w-[90%] sm:w-[70%] md:w-[50%]">
+    <div className="h-full flex flex-col justify-center items-center bg-[url('/bg_login.jpg')] bg-cover bg-center">
+      <div className="bg-[#181a1ccc] flex flex-col items-center gap-9 rounded-2xl p-10 w-[90%] sm:w-[70%] md:w-[50%] my-10">
         <img src={logo} alt="Chill Logo" className="h-11" />
 
         <div className="text-center">
@@ -137,6 +132,7 @@ const Login = () => {
               <button
                 onClick={handleLogin}
                 className="cursor-pointer text-white font-medium ml-2"
+                type="button"
               >
                 Masuk
               </button>

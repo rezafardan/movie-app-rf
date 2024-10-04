@@ -1,10 +1,9 @@
 import express from "express";
-import tokenMiddleware from "../middleware/tokenMiddleware.js"; // middleware agar klien tidak bisa akses isi web saat belum login
+import tokenMiddleware from "../middleware/tokenMiddleware.js";
 import movieController from "../controllers/movieController.js";
 
 const router = express.Router();
 
-// Endpoint CRUD
 router.get(
   "/movies",
   tokenMiddleware.tokenVerify,

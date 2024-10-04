@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { fetchMovies } from "../../../services/movieSlice";
+import { fetchMovies } from "../../../slices/movieSlice";
 import HeroCaption from "./HeroCaption";
 import Loading from "../Loading";
 import Error from "../Error";
@@ -18,7 +18,11 @@ const Hero = () => {
 
   const firstMovie = movies[0];
   if (!firstMovie || !firstMovie.thumbnail) {
-    return <Error>Error : 404 Not Found | Please reload your browser!</Error>;
+    return (
+      <Error>
+        Kesalahan : 404 Tidak ditemukan | Silahkan perbaharui halaman!
+      </Error>
+    );
   }
 
   return (

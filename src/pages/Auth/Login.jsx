@@ -3,7 +3,7 @@ import logo from "../../assets/logo.png";
 import google_logo from "../../assets/google_logo.svg";
 import { useNavigate } from "react-router-dom";
 import axiosIstance from "../../axiosConfig";
-import { setUser } from "../../services/userSlice";
+import { setUser } from "../../slices/userSlice";
 import { useDispatch } from "react-redux";
 
 const Login = () => {
@@ -33,9 +33,9 @@ const Login = () => {
       if (error.response) {
         setErrorMessage(error.response.data.message);
       } else if (error.request) {
-        setErrorMessage("No response from server. Please try again");
+        setErrorMessage("Tidak ada respon dari server, silahkan ulangi");
       } else {
-        setErrorMessage("Error: " + error.message);
+        setErrorMessage("Kesalahan: " + error.message);
       }
     }
   };
@@ -49,8 +49,8 @@ const Login = () => {
 
   return (
     <div className="h-screen flex flex-col justify-center items-center bg-[url('/bg_login.jpg')] bg-cover bg-center">
-      <div className="bg-[#181a1ccc] flex flex-col items-center gap-9 rounded-2xl p-10 w-[90%] sm:w-[70%] md:w-[50%]">
-        <img src={logo} alt="Chill Logo" className="h-11" />
+      <div className="bg-[#181a1ccc] flex flex-col items-center gap-9 rounded-2xl p-10 w-[90%] sm:w-[70%] md:w-[50%] my-10">
+        <img src={logo} alt="Chill Logo" className="" />
 
         <div className="text-center">
           <h1>Masuk</h1>
@@ -92,6 +92,7 @@ const Login = () => {
               <button
                 className="cursor-pointer text-white font-medium ml-2"
                 onClick={handleRegister}
+                type="button"
               >
                 Daftar
               </button>

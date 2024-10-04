@@ -5,9 +5,8 @@ import {
   createMovie,
   updateMovie,
   deleteMovie,
-} from "./movieService";
+} from "../services/movieService";
 
-// initial state : state awal yang berupa array kosong yang nantinya akan diisi dengan data API
 const initialState = {
   movies: [],
   currentMovie: null,
@@ -17,24 +16,30 @@ const initialState = {
 
 const token = localStorage.getItem("token");
 
-// Thunks ~ ambil data API (async)
 export const fetchMovies = createAsyncThunk(
   "movies/fetchMovies",
-  async ({ title = "", years = "", sortBy = "title", order = "asc" } = {}) => {
-    let query = `/movies?`;
+  async ({ title = "", years = "", sortBy = "", order = "" } = {}) => {
+    const token = localStorage.getItem("token");
+    let query = "/movies";
+    const queryParams = [];
 
     if (title) {
-      query += `title=${title}&`;
+      queryParams.push(`title=${title}`);
     }
 
     if (years) {
-      query += `years=${years}&`;
+      queryParams.push(`years=${years}`);
     }
 
-    query += `_sort=${sortBy}&_order=${order}`;
+    if (sortBy && order) {
+      queryParams.push(`_sort=${sortBy}&_order=${order}`);
+    }
+
+    if (queryParams.length > 0) {
+      query += `?${queryParams.join("&")}`;
+    }
 
     const response = await getMovies(query, token);
-
     return response;
   }
 );
@@ -68,16 +73,14 @@ export const removeMovie = createAsyncThunk("movie/removeMovie", async (id) => {
   return id;
 });
 
-// Slice ~ menangani pengelolaan state
 const movieSlice = createSlice({
   name: "movies",
   initialState,
-  // reducer untuk data API : reducer untuk menangani data hasil dari API dan menyimpannya ke dalam state global
   reducers: {},
   extraReducers: (builder) => {
     builder
       .addCase(fetchMovies.fulfilled, (state, action) => {
-        state.movies = action.payload; // payload isi array data API
+        state.movies = action.payload;
       })
       .addCase(fetchMovieById.fulfilled, (state, action) => {
         state.currentMovie = action.payload;
@@ -102,7 +105,6 @@ const movieSlice = createSlice({
         state.error = action.error.message;
       })
       .addCase(fetchMovieById.rejected, (state, action) => {
-        console.log(state);
         state.error = action.error.message;
       })
       .addCase(addMovie.rejected, (state, action) => {

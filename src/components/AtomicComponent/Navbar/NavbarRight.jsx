@@ -14,8 +14,8 @@ const NavbarRight = () => {
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    localStorage.clear(); // Clear all items in localStorage
-    navigate("/login"); // Redirect to login page
+    localStorage.clear();
+    navigate("/login");
   };
 
   const handleClickOut = (event) => {

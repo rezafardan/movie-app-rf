@@ -4,7 +4,6 @@ import path from "path";
 
 const router = express.Router();
 
-// Konfigurasi Penyimpanan Multer
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
     cb(null, "uploads/");
@@ -27,20 +26,18 @@ const fileFilter = (req, file, cb) => {
   }
 };
 
-// Inisialisasi Multer
 const upload = multer({
   storage: storage,
-  limits: { fileSize: 2 * 1024 * 1024 }, // 2MB
+  limits: { fileSize: 2 * 1024 * 1024 },
   fileFilter: fileFilter,
 });
 
-// Endpoint untuk Upload File
 router.post("/", upload.single("file"), (req, res) => {
   try {
     const filePath = `uploads/${req.file.filename}`;
-    res.send({ message: "File uploaded successfully", filePath });
+    res.send({ message: "File berhasil terkirim", filePath });
   } catch (error) {
-    res.status(400).send({ message: "Error uploading file", error });
+    res.status(400).send({ message: "Kesalahan mengirim file", error });
   }
 });
 

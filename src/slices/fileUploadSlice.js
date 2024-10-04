@@ -1,27 +1,15 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import axiosIstance from "../axiosConfig";
+import { uploadFileService } from "../services/uploadService";
 
 export const uploadFile = createAsyncThunk(
   "fileUpload/uploadFile",
   async (file, thunkAPI) => {
     try {
-      const formData = new FormData();
-      const token = localStorage.getItem("token");
-      formData.append("file", file);
-
-      const response = await axiosIstance.post("/upload", formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-          Authorization: `Bearer ${token}`,
-        },
-      });
-
-      console.log("Response from server:", response);
-      return response.data;
+      const response = await uploadFileService(file);
+      return response;
     } catch (error) {
-      console.error("Error from server:", error.response); // Tambahkan log ini
       return thunkAPI.rejectWithValue(
-        error.response?.data || "Error uploading file"
+        error.response?.data || "Kesalahan mengirim file"
       );
     }
   }
@@ -42,14 +30,13 @@ const fileUploadSlice = createSlice({
         state.uploading = true;
         state.success = false;
         state.error = null;
-        state.uploadedFileName = null; // Reset nama file saat upload dimulai
+        state.uploadedFileName = null;
       })
       .addCase(uploadFile.fulfilled, (state, action) => {
-        console.log("Payload received:", action.payload);
         state.uploading = false;
         state.success = true;
         state.error = null;
-        state.uploadedFileName = action.payload.filename; // Sesuaikan jika server mengirim nama file langsung
+        state.uploadedFileName = action.payload.filename;
       })
       .addCase(uploadFile.rejected, (state, action) => {
         state.uploading = false;

@@ -19,7 +19,7 @@ export const getMovieById = async (id, token = "") => {
   return response.data;
 };
 
-export const createMovie = async (movieData, token = "") => {
+export const createMovie = async (movieData, token) => {
   const response = await axiosIstance.post("/movie", movieData, {
     headers: {
       Authorization: `Bearer ${token}`,

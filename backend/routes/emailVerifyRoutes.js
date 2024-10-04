@@ -3,14 +3,11 @@ import databaseConnection from "../databaseConnection.js";
 const emailVerifyRoutes = async (req, res) => {
   const { token } = req.query;
 
-  console.log("Received token:", token);
-
   if (!token) {
     return res.status(400).json({ message: "Token tidak disediakan" });
   }
 
   try {
-    // Update is_verified menjadi true jika token cocok
     const query = `UPDATE user SET is_verified = TRUE, verification_token = NULL WHERE verification_token = ?`;
 
     const result = await new Promise((resolve, reject) => {
@@ -22,9 +19,6 @@ const emailVerifyRoutes = async (req, res) => {
         resolve(results);
       });
     });
-
-    // Cek hasil dari query
-    console.log("Hasil dari query:", result); // Tambahkan logging untuk hasil query
 
     if (result.affectedRows > 0) {
       return res.status(200).json({ message: "Email berhasil diverifikasi" });
