@@ -94,7 +94,7 @@ npm run dev
 
 ```
 cd /backend
-node databaseConnection.js
+node index.js
 ```
 
 6. Untuk create database bisa login ke MySql dan copy paste kan seluruh code yang ada di di schema.sql
